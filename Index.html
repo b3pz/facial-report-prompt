@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Premium Facial Aesthetic Report</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    background:#ffffff;
+    color:#222;
+}
+
+h1{
+    text-align:center;
+}
+
+.card{
+    border:1px solid #ddd;
+    border-radius:15px;
+    padding:25px;
+    margin-top:25px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+button{
+    background:black;
+    color:white;
+    border:none;
+    padding:15px 25px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+textarea{
+    width:100%;
+    height:250px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Premium Facial Aesthetic Report</h1>
+
+<div class="card">
+
+<h2>Dati opzionali</h2>
+
+<input id="eta" placeholder="Età">
+
+<input id="altezza" placeholder="Altezza (cm)">
+
+<input id="peso" placeholder="Peso (kg)">
+
+<input id="occhi" placeholder="Colore occhi">
+
+<input id="capelli" placeholder="Colore capelli">
+
+<input id="fumo" placeholder="Fumatore (sì/no)">
+
+<button onclick="generaPrompt()">
+Genera Prompt
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Prompt generato</h2>
+
+<textarea id="prompt"></textarea>
+
+</div>
+
+<script>
+
+function generaPrompt(){
+
+let eta=document.getElementById("eta").value;
+let altezza=document.getElementById("altezza").value;
+let peso=document.getElementById("peso").value;
+let occhi=document.getElementById("occhi").value;
+let capelli=document.getElementById("capelli").value;
+let fumo=document.getElementById("fumo").value;
+
+let testo=`
+Crea un report estetico premium del volto basato sulle foto caricate.
+
+Informazioni del soggetto:
+
+Età: ${eta}
+Altezza: ${altezza}
+Peso: ${peso}
+Occhi: ${occhi}
+Capelli: ${capelli}
+Fumatore: ${fumo}
+
+Analizza in modo realistico:
+
+- Simmetria facciale
+- Proporzioni del volto
+- Occhi
+- Naso
+- Labbra
+- Mandibola
+- Mento
+- Zigomi
+- Pelle
+- Capelli
+- Grooming
+- Potenziale fotogenico
+
+Fornisci anche:
+
+- Armocromia
+- Punti di forza
+- Aree migliorabili
+- Suggerimenti su capelli
+- Barba
+- Skincare
+- Abbigliamento
+- Fotografia
+
+Il tono deve essere elegante e professionale.
+`;
+
+document.getElementById("prompt").value=testo;
+
+}
+
+</script>
+
+</body>
+</html>
