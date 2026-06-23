@@ -14,23 +14,17 @@
 :root{
     --bg:#08090a;
     --panel:#111213;
-    --panel2:#171615;
     --gold:#d7a86e;
     --gold2:#f2d29b;
-    --gold3:#b9874e;
     --cream:#f7f0e6;
     --text:#f8f4ee;
     --muted:#b9b0a5;
-    --soft:#221f1a;
     --line:rgba(242,210,155,.24);
     --green:#10a37f;
-    --danger:#b54a4a;
 }
 
 *{box-sizing:border-box;}
-
 html{scroll-behavior:smooth;}
-
 body{
     margin:0;
     font-family:'Inter',sans-serif;
@@ -40,13 +34,8 @@ body{
         radial-gradient(circle at 12% 18%,rgba(255,255,255,.06),transparent 28%),
         linear-gradient(180deg,#070809 0%,#0d0e0e 62%,#11100e 100%);
 }
-
 a{color:inherit;}
-
-.wrap{
-    width:min(1160px,calc(100% - 36px));
-    margin:0 auto;
-}
+.wrap{width:min(1160px,calc(100% - 36px));margin:0 auto;}
 
 .hero{
     min-height:720px;
@@ -54,18 +43,14 @@ a{color:inherit;}
     position:relative;
     overflow:hidden;
 }
-
 .hero::after{
     content:"";
     position:absolute;
-    left:0;
-    right:0;
-    bottom:-1px;
+    left:0;right:0;bottom:-1px;
     height:160px;
     background:linear-gradient(180deg,transparent,#0f100f);
     pointer-events:none;
 }
-
 .hero-grid{
     position:relative;
     z-index:2;
@@ -74,7 +59,6 @@ a{color:inherit;}
     gap:56px;
     align-items:center;
 }
-
 .badge{
     display:inline-flex;
     align-items:center;
@@ -88,34 +72,28 @@ a{color:inherit;}
     text-transform:uppercase;
     font-size:12px;
     font-weight:900;
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
 }
-
 h1{
     margin:28px 0 22px;
     font-family:'Playfair Display',serif;
-    font-size:clamp(56px,8vw,98px);
+    font-size:clamp(52px,8vw,96px);
     line-height:.9;
     letter-spacing:-2.7px;
 }
-
 h1 span{color:var(--gold2);}
-
 .hero-copy{
-    max-width:560px;
+    max-width:570px;
     color:rgba(255,255,255,.82);
     font-size:18px;
     line-height:1.65;
     margin:0 0 28px;
 }
-
 .pills{
     display:flex;
     flex-wrap:wrap;
     gap:12px;
     margin:0 0 34px;
 }
-
 .pill{
     border:1px solid rgba(255,255,255,.12);
     background:rgba(255,255,255,.055);
@@ -125,14 +103,12 @@ h1 span{color:var(--gold2);}
     font-size:13px;
     font-weight:700;
 }
-
 .hero-actions{
     display:flex;
     gap:14px;
     flex-wrap:wrap;
     align-items:center;
 }
-
 .btn{
     border:0;
     outline:0;
@@ -149,40 +125,12 @@ h1 span{color:var(--gold2);}
     font-size:14px;
     transition:.22s ease;
 }
-
-.btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 16px 36px rgba(0,0,0,.26);
-}
-
-.btn-gold{
-    color:#1b1208;
-    background:linear-gradient(135deg,var(--gold2),var(--gold));
-}
-
-.btn-dark{
-    color:#fff;
-    background:#050505;
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.btn-outline{
-    background:transparent;
-    color:var(--gold2);
-    border:1px solid rgba(242,210,155,.28);
-}
-
-.btn-soft{
-    background:rgba(255,255,255,.07);
-    color:#fff;
-    border:1px solid rgba(255,255,255,.10);
-}
-
-.privacy-line{
-    margin-top:14px;
-    color:rgba(255,255,255,.62);
-    font-size:13px;
-}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.26);}
+.btn-gold{color:#1b1208;background:linear-gradient(135deg,var(--gold2),var(--gold));}
+.btn-dark{color:#fff;background:#050505;border:1px solid rgba(255,255,255,.08);}
+.btn-outline{background:transparent;color:var(--gold2);border:1px solid rgba(242,210,155,.28);}
+.btn-soft{background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.10);}
+.privacy-line{margin-top:14px;color:rgba(255,255,255,.62);font-size:13px;line-height:1.45;}
 
 /* HERO PREVIEW */
 .preview-panel{
@@ -197,7 +145,6 @@ h1 span{color:var(--gold2);}
     box-shadow:0 34px 90px rgba(0,0,0,.45);
     overflow:hidden;
 }
-
 .preview-tabs{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -205,9 +152,8 @@ h1 span{color:var(--gold2);}
     margin:0 auto 18px;
     width:min(360px,100%);
     position:relative;
-    z-index:5;
+    z-index:8;
 }
-
 .gender-tab{
     border:1px solid rgba(255,255,255,.14);
     border-radius:999px;
@@ -217,18 +163,17 @@ h1 span{color:var(--gold2);}
     color:rgba(255,255,255,.80);
     font-weight:900;
     font-size:14px;
+    cursor:pointer;
+    user-select:none;
 }
-
 .gender-tab.active{
     background:linear-gradient(135deg,rgba(242,210,155,.25),rgba(215,168,110,.12));
     color:var(--gold2);
     border-color:rgba(242,210,155,.58);
 }
-
 .face-stage{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:0;
+    grid-template-columns:1fr;
     height:345px;
     border-radius:24px;
     overflow:hidden;
@@ -236,171 +181,57 @@ h1 span{color:var(--gold2);}
     border:1px solid rgba(255,255,255,.08);
     background:#0b0b0c;
 }
-
 .face-card{
-    position:relative;
+    position:absolute;
+    inset:0;
     overflow:hidden;
+    opacity:0;
+    pointer-events:none;
+    transition:.35s ease;
     background:
         radial-gradient(circle at 50% 44%,rgba(242,210,155,.16),transparent 34%),
         linear-gradient(180deg,#141414,#090909);
 }
-
-.face-card + .face-card{
-    border-left:1px solid rgba(242,210,155,.16);
-}
-
-.ai-face{
+.face-card.active{opacity:1;pointer-events:auto;}
+.user-photo{
     position:absolute;
-    left:50%;
-    bottom:-15px;
-    width:210px;
-    height:300px;
-    transform:translateX(-50%);
-    opacity:.95;
+    inset:0;
+    z-index:4;
+    display:none;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:grayscale(100%) contrast(1.08);
 }
-
-.head{
+.user-photo.show{display:block;}
+.user-photo-overlay{
     position:absolute;
-    left:50%;
-    top:48px;
-    transform:translateX(-50%);
-    width:138px;
-    height:180px;
-    border-radius:48% 48% 43% 43%;
+    inset:0;
+    z-index:5;
+    pointer-events:none;
     background:
-        radial-gradient(circle at 50% 36%,rgba(255,255,255,.25),transparent 18%),
-        linear-gradient(135deg,#d9a783,#8d5f44);
-    box-shadow:inset 0 -18px 35px rgba(0,0,0,.30), 0 0 55px rgba(215,168,110,.16);
+        linear-gradient(90deg,rgba(5,5,5,.62),rgba(5,5,5,.08),rgba(5,5,5,.55)),
+        radial-gradient(circle at 50% 38%,transparent 0%,rgba(0,0,0,.16) 50%,rgba(0,0,0,.58) 100%);
 }
-
-.face-card.female .head{
-    background:
-        radial-gradient(circle at 50% 36%,rgba(255,255,255,.32),transparent 18%),
-        linear-gradient(135deg,#e2b79a,#9c6d52);
-    width:134px;
-    height:178px;
-}
-
-.hair{
-    position:absolute;
-    left:50%;
-    top:25px;
-    transform:translateX(-50%);
-    width:160px;
-    height:90px;
-    border-radius:50% 50% 18% 18%;
-    background:linear-gradient(135deg,#1a1210,#0d0908);
-    z-index:3;
-}
-
-.face-card.female .hair{
-    width:178px;
-    height:206px;
-    top:24px;
-    border-radius:47% 47% 36% 36%;
-    background:linear-gradient(135deg,#5a351e,#17110c);
-}
-
-.neck{
-    position:absolute;
-    left:50%;
-    top:214px;
-    transform:translateX(-50%);
-    width:70px;
-    height:70px;
-    background:linear-gradient(135deg,#bd8465,#6e4938);
-    border-radius:12px;
-}
-
-.shoulders{
-    position:absolute;
-    left:50%;
-    bottom:0;
-    transform:translateX(-50%);
-    width:210px;
-    height:90px;
-    border-radius:50% 50% 0 0;
-    background:linear-gradient(135deg,#161616,#050505);
-}
-
-.eye{
-    position:absolute;
-    top:112px;
-    width:14px;
-    height:8px;
-    border-radius:50%;
-    background:#14100d;
-    z-index:4;
-}
-.eye.left{left:72px;}
-.eye.right{right:72px;}
-
-.nose{
-    position:absolute;
-    left:50%;
-    top:128px;
-    transform:translateX(-50%);
-    width:17px;
-    height:32px;
-    border-radius:50%;
-    border-right:2px solid rgba(60,34,21,.38);
-    z-index:4;
-}
-
-.mouth{
-    position:absolute;
-    left:50%;
-    top:168px;
-    transform:translateX(-50%);
-    width:44px;
-    height:9px;
-    border-radius:50%;
-    border-bottom:3px solid rgba(60,30,25,.55);
-    z-index:4;
-}
-
-.scan-line-v{
-    position:absolute;
-    top:46px;
-    bottom:28px;
-    left:50%;
-    width:1px;
-    background:linear-gradient(180deg,transparent,var(--gold2),transparent);
-    z-index:8;
-    opacity:.7;
-}
-
-.scan-line-h{
-    position:absolute;
-    left:28px;
-    right:28px;
-    height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold2),transparent);
-    z-index:8;
-    opacity:.5;
-}
-
-.scan-line-h.l1{top:92px;}
-.scan-line-h.l2{top:150px;}
-.scan-line-h.l3{top:210px;}
-
-.face-dot{
-    position:absolute;
-    width:5px;
-    height:5px;
-    background:var(--gold2);
-    border-radius:50%;
-    box-shadow:0 0 0 5px rgba(242,210,155,.14);
-    z-index:9;
-}
-.dot1{left:38%; top:33%;}
-.dot2{left:62%; top:33%;}
-.dot3{left:50%; top:49%;}
-.dot4{left:50%; top:69%;}
-
+.ai-face{position:absolute;left:50%;bottom:-15px;width:210px;height:300px;transform:translateX(-50%);opacity:.95;}
+.head{position:absolute;left:50%;top:48px;transform:translateX(-50%);width:138px;height:180px;border-radius:48% 48% 43% 43%;background:radial-gradient(circle at 50% 36%,rgba(255,255,255,.25),transparent 18%),linear-gradient(135deg,#d9a783,#8d5f44);box-shadow:inset 0 -18px 35px rgba(0,0,0,.30),0 0 55px rgba(215,168,110,.16);}
+.face-card.female .head{background:radial-gradient(circle at 50% 36%,rgba(255,255,255,.32),transparent 18%),linear-gradient(135deg,#e2b79a,#9c6d52);width:134px;height:178px;}
+.hair{position:absolute;left:50%;top:25px;transform:translateX(-50%);width:160px;height:90px;border-radius:50% 50% 18% 18%;background:linear-gradient(135deg,#1a1210,#0d0908);z-index:3;}
+.face-card.female .hair{width:178px;height:206px;top:24px;border-radius:47% 47% 36% 36%;background:linear-gradient(135deg,#5a351e,#17110c);}
+.neck{position:absolute;left:50%;top:214px;transform:translateX(-50%);width:70px;height:70px;background:linear-gradient(135deg,#bd8465,#6e4938);border-radius:12px;}
+.shoulders{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:210px;height:90px;border-radius:50% 50% 0 0;background:linear-gradient(135deg,#161616,#050505);}
+.eye{position:absolute;top:112px;width:14px;height:8px;border-radius:50%;background:#14100d;z-index:4;}
+.eye.left{left:72px;}.eye.right{right:72px;}
+.nose{position:absolute;left:50%;top:128px;transform:translateX(-50%);width:17px;height:32px;border-radius:50%;border-right:2px solid rgba(60,34,21,.38);z-index:4;}
+.mouth{position:absolute;left:50%;top:168px;transform:translateX(-50%);width:44px;height:9px;border-radius:50%;border-bottom:3px solid rgba(60,30,25,.55);z-index:4;}
+.scan-line-v{position:absolute;top:46px;bottom:28px;left:50%;width:1px;background:linear-gradient(180deg,transparent,var(--gold2),transparent);z-index:8;opacity:.7;}
+.scan-line-h{position:absolute;left:28px;right:28px;height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent);z-index:8;opacity:.5;}
+.scan-line-h.l1{top:92px;}.scan-line-h.l2{top:150px;}.scan-line-h.l3{top:210px;}
+.face-dot{position:absolute;width:5px;height:5px;background:var(--gold2);border-radius:50%;box-shadow:0 0 0 5px rgba(242,210,155,.14);z-index:9;}
+.dot1{left:38%;top:33%;}.dot2{left:62%;top:33%;}.dot3{left:50%;top:49%;}.dot4{left:50%;top:69%;}
 .analysis-box{
     position:relative;
-    z-index:6;
+    z-index:9;
     margin:-32px auto 0;
     width:86%;
     border-radius:22px;
@@ -410,483 +241,61 @@ h1 span{color:var(--gold2);}
     padding:18px 20px;
     box-shadow:0 20px 50px rgba(0,0,0,.28);
 }
-
-.analysis-box small{
-    color:var(--gold2);
-    text-transform:uppercase;
-    letter-spacing:.08em;
-    font-weight:900;
-    font-size:11px;
-}
-
-.analysis-grid{
-    margin-top:14px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px 18px;
-}
-
-.analysis-item{
-    display:flex;
-    gap:10px;
-    align-items:center;
-    color:rgba(255,255,255,.85);
-    font-size:13px;
-    padding-bottom:9px;
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.analysis-icon{
-    color:var(--gold2);
-}
+.analysis-box small{color:var(--gold2);text-transform:uppercase;letter-spacing:.08em;font-weight:900;font-size:11px;}
+.analysis-grid{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;}
+.analysis-item{display:flex;gap:10px;align-items:center;color:rgba(255,255,255,.85);font-size:13px;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.08);}
+.analysis-icon{color:var(--gold2);}
+.demo-note{margin-top:14px;color:rgba(255,255,255,.52);font-size:12px;line-height:1.45;}
 
 /* TOP FEATURE BAR */
-.feature-strip{
-    position:relative;
-    z-index:3;
-    margin-top:-40px;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    border:1px solid rgba(242,210,155,.18);
-    border-radius:22px;
-    overflow:hidden;
-    background:rgba(255,255,255,.055);
-    backdrop-filter:blur(18px);
-    box-shadow:0 25px 70px rgba(0,0,0,.30);
-}
+.feature-strip{position:relative;z-index:3;margin-top:-40px;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid rgba(242,210,155,.18);border-radius:22px;overflow:hidden;background:rgba(255,255,255,.055);backdrop-filter:blur(18px);box-shadow:0 25px 70px rgba(0,0,0,.30);}
+.feature{min-height:96px;padding:22px;border-left:1px solid rgba(242,210,155,.12);display:flex;gap:14px;align-items:flex-start;}
+.feature:first-child{border-left:none;}.feature-icon{font-size:25px;color:var(--gold2);}.feature strong{display:block;color:var(--gold2);margin-bottom:5px;}.feature span{color:rgba(255,255,255,.68);font-size:13px;line-height:1.4;}
 
-.feature{
-    min-height:96px;
-    padding:22px;
-    border-left:1px solid rgba(242,210,155,.12);
-    display:flex;
-    gap:14px;
-    align-items:flex-start;
-}
-
-.feature:first-child{border-left:none;}
-
-.feature-icon{
-    font-size:25px;
-    color:var(--gold2);
-}
-
-.feature strong{
-    display:block;
-    color:var(--gold2);
-    margin-bottom:5px;
-}
-
-.feature span{
-    color:rgba(255,255,255,.68);
-    font-size:13px;
-    line-height:1.4;
-}
-
-/* CONTENT */
-main{
-    padding:22px 0 64px;
-}
-
-.card{
-    border:1px solid rgba(242,210,155,.17);
-    background:rgba(255,255,255,.045);
-    border-radius:24px;
-    padding:28px;
-    box-shadow:0 24px 70px rgba(0,0,0,.22);
-    backdrop-filter:blur(18px);
-}
-
-.card + .card{
-    margin-top:24px;
-}
-
-.card-title{
-    display:flex;
-    gap:14px;
-    align-items:flex-start;
-    margin-bottom:24px;
-}
-
-.icon-bubble{
-    width:46px;
-    height:46px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(135deg,rgba(242,210,155,.28),rgba(215,168,110,.13));
-    color:var(--gold2);
-    font-size:20px;
-    flex:0 0 auto;
-}
-
-h2{
-    margin:0;
-    font-size:26px;
-    letter-spacing:-.7px;
-}
-
-.hint{
-    margin-top:5px;
-    color:rgba(255,255,255,.62);
-    font-size:14px;
-    line-height:1.45;
-}
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:0;
-}
-
-.step{
-    position:relative;
-    padding:8px 22px 6px;
-    display:grid;
-    grid-template-columns:48px 1fr;
-    gap:14px;
-    align-items:start;
-}
-
-.step:not(:last-child)::after{
-    content:"→";
-    position:absolute;
-    right:-8px;
-    top:27px;
-    color:rgba(242,210,155,.32);
-}
-
-.step-number{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:rgba(242,210,155,.14);
-    border:1px solid rgba(242,210,155,.25);
-    color:var(--gold2);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:900;
-}
-
-.step strong{
-    display:block;
-    margin-bottom:6px;
-}
-
-.step p{
-    margin:0;
-    color:rgba(255,255,255,.62);
-    font-size:13px;
-    line-height:1.55;
-}
-
-.two-col{
-    display:grid;
-    grid-template-columns:1.08fr .92fr;
-    gap:24px;
-    margin-top:24px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-}
-
-.field label{
-    display:block;
-    font-size:12px;
-    font-weight:800;
-    color:var(--gold2);
-    margin-bottom:8px;
-}
-
-input,select{
-    width:100%;
-    height:50px;
-    border-radius:14px;
-    border:1px solid rgba(255,255,255,.16);
-    background:rgba(0,0,0,.16);
-    color:var(--text);
-    padding:0 14px;
-    outline:none;
-    font-family:'Inter',sans-serif;
-    font-size:14px;
-}
-
-select option{
-    color:#111;
-}
-
-input:focus,select:focus{
-    border-color:rgba(242,210,155,.62);
-    box-shadow:0 0 0 4px rgba(242,210,155,.10);
-}
-
-.actions{
-    display:grid;
-    grid-template-columns:1.25fr .95fr .7fr;
-    gap:12px;
-    margin-top:24px;
-}
-
-.notice{
-    display:none;
-    margin-top:18px;
-    padding:14px 16px;
-    border-radius:14px;
-    border:1px solid rgba(16,163,127,.28);
-    background:rgba(16,163,127,.10);
-    color:#91f1d9;
-    font-weight:800;
-    font-size:13px;
-}
-
-.privacy-note{
-    margin-top:18px;
-    color:rgba(255,255,255,.52);
-    font-size:13px;
-}
+main{padding:22px 0 64px;}
+.card{border:1px solid rgba(242,210,155,.17);background:rgba(255,255,255,.045);border-radius:24px;padding:28px;box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px);}
+.card + .card{margin-top:24px;}
+.card-title{display:flex;gap:14px;align-items:flex-start;margin-bottom:24px;}
+.icon-bubble{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(242,210,155,.28),rgba(215,168,110,.13));color:var(--gold2);font-size:20px;flex:0 0 auto;}
+h2{margin:0;font-size:26px;letter-spacing:-.7px;}.hint{margin-top:5px;color:rgba(255,255,255,.62);font-size:14px;line-height:1.45;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+.step{position:relative;padding:8px 22px 6px;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-8px;top:27px;color:rgba(242,210,155,.32);}
+.step-number{width:42px;height:42px;border-radius:50%;background:rgba(242,210,155,.14);border:1px solid rgba(242,210,155,.25);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-weight:900;}
+.step strong{display:block;margin-bottom:6px;}.step p{margin:0;color:rgba(255,255,255,.62);font-size:13px;line-height:1.55;}
+.two-col{display:grid;grid-template-columns:.92fr 1.08fr;gap:24px;margin-top:24px;align-items:start;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.field label{display:block;font-size:12px;font-weight:800;color:var(--gold2);margin-bottom:8px;}
+input,select{width:100%;height:50px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.16);color:var(--text);padding:0 14px;outline:none;font-family:'Inter',sans-serif;font-size:14px;}
+select option{color:#111;} input:focus,select:focus{border-color:rgba(242,210,155,.62);box-shadow:0 0 0 4px rgba(242,210,155,.10);}
+.actions{display:grid;grid-template-columns:1.3fr .85fr;gap:12px;margin-top:24px;}
+.notice{display:none;margin-top:18px;padding:14px 16px;border-radius:14px;border:1px solid rgba(16,163,127,.28);background:rgba(16,163,127,.10);color:#91f1d9;font-weight:800;font-size:13px;}
+.privacy-note{margin-top:18px;color:rgba(255,255,255,.52);font-size:13px;line-height:1.5;}
 
 /* UPLOAD */
-.upload-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
-}
+.upload-box{border:1px solid rgba(242,210,155,.17);background:rgba(0,0,0,.14);border-radius:20px;padding:16px;}
+.dropzone{margin-top:10px;border:1px dashed rgba(242,210,155,.34);border-radius:18px;min-height:270px;display:flex;align-items:center;justify-content:center;text-align:center;color:rgba(255,255,255,.62);font-size:14px;cursor:pointer;overflow:hidden;position:relative;background:rgba(255,255,255,.035);transition:.22s ease;}
+.dropzone:hover,.dropzone.dragover{border-color:rgba(242,210,155,.85);background:rgba(242,210,155,.07);}
+.dropzone input{display:none;}
+.preview-img{display:none;width:100%;height:100%;object-fit:cover;position:absolute;inset:0;filter:grayscale(100%) contrast(1.04);}
+.upload-placeholder{padding:18px;line-height:1.55;}
+.upload-placeholder strong{display:block;color:var(--gold2);font-size:18px;margin-bottom:8px;}
+.upload-status{margin-top:14px;border-radius:999px;padding:10px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.70);font-size:12px;font-weight:900;display:inline-flex;}
+.upload-status.ok{background:rgba(16,163,127,.12);border-color:rgba(16,163,127,.34);color:#9cf1dd;}
+.local-note{margin-top:20px;border:1px solid rgba(242,210,155,.24);background:rgba(242,210,155,.08);border-radius:16px;padding:15px;color:#e8cfaa;font-size:13px;line-height:1.55;}
 
-.upload-box{
-    border:1px solid rgba(242,210,155,.17);
-    background:rgba(0,0,0,.14);
-    border-radius:18px;
-    padding:14px;
-    min-height:210px;
-}
-
-.upload-box h3{
-    margin:0 0 4px;
-    font-size:14px;
-}
-
-.upload-box small{
-    color:var(--gold2);
-    font-size:11px;
-}
-
-.dropzone{
-    margin-top:14px;
-    border:1px dashed rgba(255,255,255,.22);
-    border-radius:14px;
-    height:116px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:rgba(255,255,255,.50);
-    font-size:12px;
-    cursor:pointer;
-    overflow:hidden;
-    position:relative;
-    background:rgba(255,255,255,.03);
-}
-
-.dropzone:hover{
-    border-color:rgba(242,210,155,.45);
-}
-
-.dropzone input{
-    display:none;
-}
-
-.preview-img{
-    display:none;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    position:absolute;
-    inset:0;
-}
-
-.upload-placeholder{
-    padding:12px;
-}
-
-.status-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:18px;
-}
-
-.status-pill{
-    border-radius:999px;
-    padding:8px 11px;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.12);
-    color:rgba(255,255,255,.70);
-    font-size:12px;
-    font-weight:800;
-}
-
-.status-pill.ok{
-    background:rgba(16,163,127,.12);
-    border-color:rgba(16,163,127,.34);
-    color:#9cf1dd;
-}
-
-.analysis-level{
-    margin-top:20px;
-    border:1px solid rgba(242,210,155,.18);
-    background:rgba(0,0,0,.16);
-    border-radius:18px;
-    padding:18px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:18px;
-}
-
-.level-name{
-    color:var(--gold2);
-    font-size:28px;
-    font-weight:900;
-    letter-spacing:.02em;
-}
-
-.level-help{
-    color:rgba(255,255,255,.62);
-    font-size:13px;
-}
-
-.local-note{
-    margin-top:20px;
-    border:1px solid rgba(242,210,155,.24);
-    background:rgba(242,210,155,.08);
-    border-radius:16px;
-    padding:15px;
-    color:#e8cfaa;
-    font-size:13px;
-    line-height:1.55;
-}
-
-.footer{
-    border-top:1px solid rgba(242,210,155,.12);
-    padding:26px 0 38px;
-    color:rgba(255,255,255,.55);
-    font-size:13px;
-}
-
-.footer-inner{
-    display:flex;
-    justify-content:space-between;
-    gap:18px;
-}
-
-.hidden-prompt{
-    position:absolute;
-    left:-9999px;
-    width:1px;
-    height:1px;
-    opacity:0;
-    pointer-events:none;
-}
+.footer{border-top:1px solid rgba(242,210,155,.12);padding:26px 0 38px;color:rgba(255,255,255,.55);font-size:13px;}.footer-inner{display:flex;justify-content:space-between;gap:18px;}.hidden-prompt{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;}
 
 @media(max-width:980px){
-    .hero-grid{
-        grid-template-columns:1fr;
-        gap:34px;
-    }
-
-    .preview-panel{
-        min-height:520px;
-    }
-
-    .feature-strip{
-        grid-template-columns:1fr;
-        margin-top:-20px;
-    }
-
-    .feature{
-        border-left:none;
-        border-top:1px solid rgba(242,210,155,.12);
-    }
-
-    .feature:first-child{border-top:none;}
-
-    .steps{
-        grid-template-columns:1fr;
-        gap:18px;
-    }
-
-    .step:not(:last-child)::after{
-        display:none;
-    }
-
-    .two-col{
-        grid-template-columns:1fr;
-    }
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .preview-panel{min-height:520px;}
+    .feature-strip{grid-template-columns:1fr;margin-top:-20px;}
+    .feature{border-left:none;border-top:1px solid rgba(242,210,155,.12);}.feature:first-child{border-top:none;}
+    .steps{grid-template-columns:1fr;gap:18px;}.step:not(:last-child)::after{display:none;}
+    .two-col{grid-template-columns:1fr;}
 }
-
 @media(max-width:700px){
-    .wrap{
-        width:min(100% - 24px,1160px);
-    }
-
-    .hero{
-        padding-top:28px;
-        min-height:auto;
-    }
-
-    h1{
-        font-size:clamp(46px,17vw,72px);
-    }
-
-    .hero-copy{
-        font-size:16px;
-    }
-
-    .hero-actions,.actions{
-        display:grid;
-        grid-template-columns:1fr;
-    }
-
-    .preview-panel{
-        min-height:620px;
-        padding:14px;
-    }
-
-    .face-stage{
-        grid-template-columns:1fr;
-        height:610px;
-    }
-
-    .face-card + .face-card{
-        border-left:none;
-        border-top:1px solid rgba(242,210,155,.16);
-    }
-
-    .analysis-box{
-        width:100%;
-        margin:16px 0 0;
-    }
-
-    .analysis-grid{
-        grid-template-columns:1fr;
-    }
-
-    .card{
-        padding:20px;
-    }
-
-    .grid,.upload-grid{
-        grid-template-columns:1fr;
-    }
-
-    .footer-inner{
-        display:block;
-    }
+    .wrap{width:min(100% - 24px,1160px);}.hero{padding-top:28px;min-height:auto;}h1{font-size:clamp(44px,16vw,70px);}.hero-copy{font-size:16px;}.hero-actions,.actions{display:grid;grid-template-columns:1fr;}.preview-panel{min-height:auto;padding:14px;}.face-stage{height:430px;}.analysis-box{width:100%;margin:16px 0 0;}.analysis-grid{grid-template-columns:1fr;}.card{padding:20px;}.grid{grid-template-columns:1fr;}.footer-inner{display:block;}
 }
 </style>
 </head>
@@ -896,77 +305,46 @@ input:focus,select:focus{
 <section class="hero">
     <div class="wrap hero-grid">
         <div>
-            <div class="badge">✦ AI Powered</div>
-            <h1><span>Premium</span><br>Facial<br>Aesthetic<br>Report</h1>
-            <p class="hero-copy">Il generatore di prompt più avanzato per analisi estetica del volto, armocromia e consulenza d’immagine.</p>
+            <div class="badge">✦ Report estetico premium</div>
+            <h1><span>Scopri</span><br>il potenziale<br>del tuo volto</h1>
+            <p class="hero-copy">Analisi facciale, armocromia, grooming e consigli personalizzati. Carica una foto, compila i dati e apri ChatGPT con il prompt già pronto.</p>
 
             <div class="pills">
-                <div class="pill">✓ Professionale</div>
-                <div class="pill">✓ Completo</div>
-                <div class="pill">✓ Personalizzato</div>
+                <div class="pill">✓ Una sola foto</div>
+                <div class="pill">✓ Prompt nascosto</div>
+                <div class="pill">✓ Nessuna API</div>
                 <div class="pill">✓ In italiano</div>
             </div>
 
             <div class="hero-actions">
-                <a class="btn btn-gold" href="#upload">🚀 Inizia il tuo report →</a>
-                <span class="privacy-line">🛡️ Nessuna registrazione<br>I tuoi dati restano solo locali</span>
+                <a class="btn btn-gold" href="#upload">📷 Carica la foto →</a>
+                <span class="privacy-line">🛡️ Nessuna registrazione<br>La foto resta solo sul tuo dispositivo</span>
             </div>
         </div>
 
         <div class="preview-panel">
-            <div class="preview-tabs">
-                <div class="gender-tab active">♂ Uomo</div>
-                <div class="gender-tab">♀ Donna</div>
+            <div class="preview-tabs" id="genderTabs">
+                <div id="maleTab" class="gender-tab active" onclick="showGender('male')">♂ Uomo</div>
+                <div id="femaleTab" class="gender-tab" onclick="showGender('female')">♀ Donna</div>
             </div>
 
             <div class="face-stage">
-                <div class="face-card male">
-                    <div class="ai-face">
-                        <div class="hair"></div>
-                        <div class="head">
-                            <div class="eye left"></div>
-                            <div class="eye right"></div>
-                            <div class="nose"></div>
-                            <div class="mouth"></div>
-                        </div>
-                        <div class="neck"></div>
-                        <div class="shoulders"></div>
-                    </div>
-                    <div class="scan-line-v"></div>
-                    <div class="scan-line-h l1"></div>
-                    <div class="scan-line-h l2"></div>
-                    <div class="scan-line-h l3"></div>
-                    <div class="face-dot dot1"></div>
-                    <div class="face-dot dot2"></div>
-                    <div class="face-dot dot3"></div>
-                    <div class="face-dot dot4"></div>
+                <img id="heroUserPhoto" class="user-photo" alt="Foto caricata dall'utente">
+                <div id="heroOverlay" class="user-photo-overlay" style="display:none;"></div>
+
+                <div id="maleFace" class="face-card male active">
+                    <div class="ai-face"><div class="hair"></div><div class="head"><div class="eye left"></div><div class="eye right"></div><div class="nose"></div><div class="mouth"></div></div><div class="neck"></div><div class="shoulders"></div></div>
+                    <div class="scan-line-v"></div><div class="scan-line-h l1"></div><div class="scan-line-h l2"></div><div class="scan-line-h l3"></div><div class="face-dot dot1"></div><div class="face-dot dot2"></div><div class="face-dot dot3"></div><div class="face-dot dot4"></div>
                 </div>
 
-                <div class="face-card female">
-                    <div class="ai-face">
-                        <div class="hair"></div>
-                        <div class="head">
-                            <div class="eye left"></div>
-                            <div class="eye right"></div>
-                            <div class="nose"></div>
-                            <div class="mouth"></div>
-                        </div>
-                        <div class="neck"></div>
-                        <div class="shoulders"></div>
-                    </div>
-                    <div class="scan-line-v"></div>
-                    <div class="scan-line-h l1"></div>
-                    <div class="scan-line-h l2"></div>
-                    <div class="scan-line-h l3"></div>
-                    <div class="face-dot dot1"></div>
-                    <div class="face-dot dot2"></div>
-                    <div class="face-dot dot3"></div>
-                    <div class="face-dot dot4"></div>
+                <div id="femaleFace" class="face-card female">
+                    <div class="ai-face"><div class="hair"></div><div class="head"><div class="eye left"></div><div class="eye right"></div><div class="nose"></div><div class="mouth"></div></div><div class="neck"></div><div class="shoulders"></div></div>
+                    <div class="scan-line-v"></div><div class="scan-line-h l1"></div><div class="scan-line-h l2"></div><div class="scan-line-h l3"></div><div class="face-dot dot1"></div><div class="face-dot dot2"></div><div class="face-dot dot3"></div><div class="face-dot dot4"></div>
                 </div>
             </div>
 
             <div class="analysis-box">
-                <small>Analisi disponibile</small>
+                <small>Anteprima del report</small>
                 <div class="analysis-grid">
                     <div class="analysis-item"><span class="analysis-icon">◈</span> Simmetria facciale</div>
                     <div class="analysis-item"><span class="analysis-icon">✂</span> Grooming</div>
@@ -977,6 +355,7 @@ input:focus,select:focus{
                     <div class="analysis-item"><span class="analysis-icon">◒</span> Armocromia</div>
                     <div class="analysis-item"><span class="analysis-icon">✓</span> Consigli personalizzati</div>
                 </div>
+                <div class="demo-note">Anteprima illustrativa. I risultati reali verranno generati da ChatGPT sulla base della foto caricata e dei dati inseriti.</div>
             </div>
         </div>
     </div>
@@ -984,26 +363,11 @@ input:focus,select:focus{
 
 <div class="wrap">
     <div class="feature-strip">
-        <div class="feature">
-            <div class="feature-icon">☆</div>
-            <div><strong>14+ categorie</strong><span>estetiche analizzate</span></div>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">◉</div>
-            <div><strong>Armocromia</strong><span>completa e personalizzata</span></div>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">✂</div>
-            <div><strong>Consigli</strong><span>capelli, barba e grooming</span></div>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">▣</div>
-            <div><strong>Fotografia</strong><span>angoli e pose migliori</span></div>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">▤</div>
-            <div><strong>Report</strong><span>dettagliato in italiano</span></div>
-        </div>
+        <div class="feature"><div class="feature-icon">☆</div><div><strong>14+ categorie</strong><span>estetiche analizzate</span></div></div>
+        <div class="feature"><div class="feature-icon">◉</div><div><strong>Armocromia</strong><span>completa e personalizzata</span></div></div>
+        <div class="feature"><div class="feature-icon">✂</div><div><strong>Consigli</strong><span>capelli, barba e grooming</span></div></div>
+        <div class="feature"><div class="feature-icon">▣</div><div><strong>Fotografia</strong><span>angoli e pose migliori</span></div></div>
+        <div class="feature"><div class="feature-icon">▤</div><div><strong>Report</strong><span>dettagliato in italiano</span></div></div>
     </div>
 </div>
 
@@ -1011,212 +375,61 @@ input:focus,select:focus{
     <div class="card">
         <div class="card-title">
             <div class="icon-bubble">↳</div>
-            <div>
-                <h2>Come funziona</h2>
-                <div class="hint">Un flusso semplice, gratuito e senza API: il prompt viene copiato e usato su ChatGPT.</div>
-            </div>
+            <div><h2>Come funziona</h2><div class="hint">Un flusso semplice, gratuito e senza API: il prompt viene copiato e usato su ChatGPT.</div></div>
         </div>
-
         <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div><strong>Carica le foto</strong><p>Frontale e profili per un’analisi più accurata.</p></div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div><strong>Inserisci i dati</strong><p>Compila le informazioni richieste.</p></div>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div><strong>Genera il prompt</strong><p>Il prompt viene creato automaticamente.</p></div>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <div><strong>Apri ChatGPT</strong><p>Incolla il prompt e ottieni il report.</p></div>
-            </div>
+            <div class="step"><div class="step-number">1</div><div><strong>Carica una foto</strong><p>Usa una foto frontale ben illuminata.</p></div></div>
+            <div class="step"><div class="step-number">2</div><div><strong>Inserisci i dati</strong><p>Compila solo le informazioni disponibili.</p></div></div>
+            <div class="step"><div class="step-number">3</div><div><strong>Apri ChatGPT</strong><p>Il prompt viene copiato automaticamente.</p></div></div>
         </div>
     </div>
 
     <div class="two-col">
+        <div class="card" id="upload">
+            <div class="card-title">
+                <div class="icon-bubble">📷</div>
+                <div><h2>Foto del volto</h2><div class="hint">Carica o trascina una foto frontale. Su iPhone puoi anche scattarla direttamente.</div></div>
+            </div>
+
+            <div class="upload-box">
+                <label id="dropzone" class="dropzone">
+                    <input type="file" id="facePhoto" accept="image/*" capture="user">
+                    <img id="facePreview" class="preview-img" alt="Anteprima foto">
+                    <span id="uploadPlaceholder" class="upload-placeholder"><strong>Trascina qui la foto</strong>oppure clicca per scegliere o scattare una foto</span>
+                </label>
+                <span id="uploadStatus" class="upload-status">Foto non caricata</span>
+            </div>
+
+            <div class="local-note">La foto viene mostrata solo come anteprima locale nel browser e non viene inviata a nessun server. Per generare il report dovrai caricare manualmente la stessa foto su ChatGPT insieme al prompt copiato.</div>
+        </div>
+
         <div class="card" id="form">
             <div class="card-title">
                 <div class="icon-bubble">👤</div>
-                <div>
-                    <h2>Informazioni del soggetto</h2>
-                    <div class="hint">Più informazioni fornisci, più il report sarà preciso e dettagliato.</div>
-                </div>
+                <div><h2>Informazioni del soggetto</h2><div class="hint">Più informazioni fornisci, più il report sarà preciso e dettagliato.</div></div>
             </div>
 
             <div class="grid">
-                <div class="field">
-                    <label>Sesso</label>
-                    <select id="sesso">
-                        <option value="">Seleziona</option>
-                        <option>Maschio</option>
-                        <option>Femmina</option>
-                        <option>Altro / Preferisco non indicarlo</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label>Età</label>
-                    <input id="eta" placeholder="es. 30">
-                </div>
-
-                <div class="field">
-                    <label>Altezza (cm)</label>
-                    <input id="altezza" placeholder="es. 175">
-                </div>
-
-                <div class="field">
-                    <label>Peso (kg)</label>
-                    <input id="peso" placeholder="es. 70">
-                </div>
-
-                <div class="field">
-                    <label>Colore occhi</label>
-                    <input id="occhi" placeholder="es. marroni">
-                </div>
-
-                <div class="field">
-                    <label>Colore capelli</label>
-                    <input id="capelli" placeholder="es. castani">
-                </div>
-
-                <div class="field">
-                    <label>Occhiali</label>
-                    <select id="occhiali">
-                        <option value="">Seleziona</option>
-                        <option>Sì</option>
-                        <option>No</option>
-                        <option>A volte</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label>Fumatore</label>
-                    <select id="fumo">
-                        <option value="">Seleziona</option>
-                        <option>Sì</option>
-                        <option>No</option>
-                        <option>Occasionale</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label>Consumo di alcol</label>
-                    <select id="alcol">
-                        <option value="">Seleziona</option>
-                        <option>Nessuno</option>
-                        <option>Basso</option>
-                        <option>Moderato</option>
-                        <option>Elevato</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label>Attività fisica</label>
-                    <select id="sport">
-                        <option value="">Seleziona</option>
-                        <option>Sedentario</option>
-                        <option>1-2 volte a settimana</option>
-                        <option>3-4 volte a settimana</option>
-                        <option>5 o più volte a settimana</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label>Routine skincare</label>
-                    <select id="skincare">
-                        <option value="">Seleziona</option>
-                        <option>Nessuna</option>
-                        <option>Base: detergente / crema</option>
-                        <option>Regolare: detergente, crema, SPF</option>
-                        <option>Avanzata: routine completa con attivi</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label>Foto disponibili</label>
-                    <select id="foto">
-                        <option>Solo foto frontale</option>
-                        <option>Frontale + profilo destro</option>
-                        <option>Frontale + profilo sinistro</option>
-                        <option>Frontale + entrambi i profili</option>
-                        <option>Più foto con luci diverse</option>
-                    </select>
-                </div>
+                <div class="field"><label>Sesso</label><select id="sesso"><option value="">Seleziona</option><option>Maschio</option><option>Femmina</option><option>Altro / Preferisco non indicarlo</option></select></div>
+                <div class="field"><label>Età</label><input id="eta" placeholder="es. 30"></div>
+                <div class="field"><label>Altezza (cm)</label><input id="altezza" placeholder="es. 175"></div>
+                <div class="field"><label>Peso (kg)</label><input id="peso" placeholder="es. 70"></div>
+                <div class="field"><label>Colore occhi</label><input id="occhi" placeholder="es. marroni"></div>
+                <div class="field"><label>Colore capelli</label><input id="capelli" placeholder="es. castani"></div>
+                <div class="field"><label>Occhiali</label><select id="occhiali"><option value="">Seleziona</option><option>Sì</option><option>No</option><option>A volte</option></select></div>
+                <div class="field"><label>Fumatore</label><select id="fumo"><option value="">Seleziona</option><option>Sì</option><option>No</option><option>Occasionale</option></select></div>
+                <div class="field"><label>Consumo di alcol</label><select id="alcol"><option value="">Seleziona</option><option>Nessuno</option><option>Basso</option><option>Moderato</option><option>Elevato</option></select></div>
+                <div class="field"><label>Attività fisica</label><select id="sport"><option value="">Seleziona</option><option>Sedentario</option><option>1-2 volte a settimana</option><option>3-4 volte a settimana</option><option>5 o più volte a settimana</option></select></div>
+                <div class="field"><label>Routine skincare</label><select id="skincare"><option value="">Seleziona</option><option>Nessuna</option><option>Base: detergente / crema</option><option>Regolare: detergente, crema, SPF</option><option>Avanzata: routine completa con attivi</option></select></div>
             </div>
 
             <div class="actions">
-                <button class="btn btn-gold" onclick="copyAndOpenChatGPT()">🚀 Copia prompt e apri ChatGPT</button>
-                <button class="btn btn-soft" onclick="copyPromptOnly()">⧉ Copia solo prompt</button>
+                <button class="btn btn-gold" onclick="copyAndOpenChatGPT()">🚀 Genera il mio report</button>
                 <button class="btn btn-outline" onclick="resetCampi()">↺ Reset</button>
             </div>
 
             <div id="copyMessage" class="notice">Prompt copiato negli appunti.</div>
             <div class="privacy-note">🔒 I tuoi dati non vengono salvati né trasmessi. Tutto rimane nel tuo browser.</div>
-        </div>
-
-        <div class="card" id="upload">
-            <div class="card-title">
-                <div class="icon-bubble">📷</div>
-                <div>
-                    <h2>Fotografie del volto</h2>
-                    <div class="hint">Carica le foto richieste per l’analisi. L’anteprima resta solo nel browser.</div>
-                </div>
-            </div>
-
-            <div class="upload-grid">
-                <div class="upload-box">
-                    <h3>Foto frontale</h3>
-                    <small>Obbligatoria</small>
-                    <label class="dropzone">
-                        <input type="file" id="frontPhoto" accept="image/*">
-                        <img id="frontPreview" class="preview-img" alt="">
-                        <span class="upload-placeholder">Trascina o clicca<br>per caricare</span>
-                    </label>
-                </div>
-
-                <div class="upload-box">
-                    <h3>Profilo destro</h3>
-                    <small>Opzionale</small>
-                    <label class="dropzone">
-                        <input type="file" id="rightPhoto" accept="image/*">
-                        <img id="rightPreview" class="preview-img" alt="">
-                        <span class="upload-placeholder">Trascina o clicca<br>per caricare</span>
-                    </label>
-                </div>
-
-                <div class="upload-box">
-                    <h3>Profilo sinistro</h3>
-                    <small>Opzionale</small>
-                    <label class="dropzone">
-                        <input type="file" id="leftPhoto" accept="image/*">
-                        <img id="leftPreview" class="preview-img" alt="">
-                        <span class="upload-placeholder">Trascina o clicca<br>per caricare</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="status-row">
-                <span id="statusFront" class="status-pill">Frontale mancante</span>
-                <span id="statusRight" class="status-pill">Profilo destro mancante</span>
-                <span id="statusLeft" class="status-pill">Profilo sinistro mancante</span>
-            </div>
-
-            <div class="local-note">
-                Le foto vengono mostrate solo come anteprima locale nel browser e non vengono inviate a nessun server. Per generare il report dovrai caricarle manualmente su ChatGPT insieme al prompt copiato.
-            </div>
-
-            <div class="analysis-level">
-                <div>
-                    <div class="level-help">Livello di analisi</div>
-                    <div id="analysisLevel" class="level-name">BASE</div>
-                    <div id="analysisHelp" class="level-help">Carica almeno 1 foto</div>
-                </div>
-                <div style="font-size:42px;color:var(--gold2);">◔</div>
-            </div>
         </div>
     </div>
 </main>
@@ -1231,90 +444,88 @@ input:focus,select:focus{
 <textarea id="hiddenPrompt" class="hidden-prompt" aria-hidden="true"></textarea>
 
 <script>
-function valore(id){
-    return document.getElementById(id).value || "Non specificato";
+function valore(id){return document.getElementById(id).value || "Non specificato";}
+
+let uploadedPhoto = false;
+let uploadedPhotoURL = null;
+
+function showGender(gender){
+    if(uploadedPhoto) return;
+    const maleTab = document.getElementById("maleTab");
+    const femaleTab = document.getElementById("femaleTab");
+    const maleFace = document.getElementById("maleFace");
+    const femaleFace = document.getElementById("femaleFace");
+
+    maleTab.classList.toggle("active", gender === "male");
+    femaleTab.classList.toggle("active", gender === "female");
+    maleFace.classList.toggle("active", gender === "male");
+    femaleFace.classList.toggle("active", gender === "female");
 }
 
-const photoState = {
-    front:false,
-    right:false,
-    left:false
-};
+function handlePhotoFile(file){
+    if(!file) return;
 
-function countPhotos(){
-    return Object.values(photoState).filter(Boolean).length;
-}
-
-function updatePhotoStatus(){
-    const count = countPhotos();
-
-    document.getElementById("statusFront").textContent = photoState.front ? "Frontale caricato" : "Frontale mancante";
-    document.getElementById("statusRight").textContent = photoState.right ? "Profilo destro caricato" : "Profilo destro mancante";
-    document.getElementById("statusLeft").textContent = photoState.left ? "Profilo sinistro caricato" : "Profilo sinistro mancante";
-
-    document.getElementById("statusFront").classList.toggle("ok", photoState.front);
-    document.getElementById("statusRight").classList.toggle("ok", photoState.right);
-    document.getElementById("statusLeft").classList.toggle("ok", photoState.left);
-
-    const level = document.getElementById("analysisLevel");
-    const help = document.getElementById("analysisHelp");
-    const foto = document.getElementById("foto");
-
-    if(count === 0){
-        level.textContent = "BASE";
-        help.textContent = "Carica almeno 1 foto";
-        foto.value = "Solo foto frontale";
-    } else if(count === 1){
-        level.textContent = "BASE";
-        help.textContent = "Analisi basata su una sola foto";
-        foto.value = "Solo foto frontale";
-    } else if(count === 2){
-        level.textContent = "AVANZATA";
-        help.textContent = "Analisi migliorata con 2 foto";
-        foto.value = photoState.right ? "Frontale + profilo destro" : "Frontale + profilo sinistro";
-    } else {
-        level.textContent = "COMPLETA";
-        help.textContent = "Analisi completa con frontale e profili";
-        foto.value = "Frontale + entrambi i profili";
+    if(!file.type.startsWith("image/")){
+        showMessage("Carica un file immagine valido.");
+        return;
     }
+
+    uploadedPhoto = true;
+    if(uploadedPhotoURL) URL.revokeObjectURL(uploadedPhotoURL);
+    uploadedPhotoURL = URL.createObjectURL(file);
+
+    const preview = document.getElementById("facePreview");
+    const hero = document.getElementById("heroUserPhoto");
+    const placeholder = document.getElementById("uploadPlaceholder");
+    const status = document.getElementById("uploadStatus");
+
+    preview.src = uploadedPhotoURL;
+    preview.style.display = "block";
+    hero.src = uploadedPhotoURL;
+    hero.classList.add("show");
+    document.getElementById("heroOverlay").style.display = "block";
+    placeholder.style.display = "none";
+    status.textContent = "Foto caricata";
+    status.classList.add("ok");
+    document.getElementById("genderTabs").style.opacity = ".38";
 }
 
-function setupPreview(inputId, imageId, key){
-    const input = document.getElementById(inputId);
-    const preview = document.getElementById(imageId);
-    const placeholder = input.parentElement.querySelector(".upload-placeholder");
+const fileInput = document.getElementById("facePhoto");
+const dropzone = document.getElementById("dropzone");
 
-    input.addEventListener("change", function(){
-        const file = this.files[0];
-
-        if(!file){
-            photoState[key] = false;
-            preview.style.display = "none";
-            placeholder.style.display = "block";
-            updatePhotoStatus();
-            return;
-        }
-
-        photoState[key] = true;
-        preview.src = URL.createObjectURL(file);
-        preview.style.display = "block";
-        placeholder.style.display = "none";
-        updatePhotoStatus();
+fileInput.addEventListener("change", function(){handlePhotoFile(this.files[0]);});
+["dragenter","dragover"].forEach(eventName => {
+    dropzone.addEventListener(eventName, function(e){
+        e.preventDefault();
+        dropzone.classList.add("dragover");
     });
-}
+});
+["dragleave","drop"].forEach(eventName => {
+    dropzone.addEventListener(eventName, function(e){
+        e.preventDefault();
+        dropzone.classList.remove("dragover");
+    });
+});
+dropzone.addEventListener("drop", function(e){
+    const file = e.dataTransfer.files[0];
+    handlePhotoFile(file);
+});
 
-setupPreview("frontPhoto","frontPreview","front");
-setupPreview("rightPhoto","rightPreview","right");
-setupPreview("leftPhoto","leftPreview","left");
+function showMessage(text){
+    const msg = document.getElementById("copyMessage");
+    msg.style.display = "block";
+    msg.textContent = text;
+    setTimeout(() => { msg.style.display = "none"; }, 2800);
+}
 
 function generaPrompt(){
-let testo = `Crea un report estetico premium del volto basato sulle fotografie caricate.
+let testo = `Crea un report estetico premium del volto basato sulla fotografia caricata.
 
 Il risultato deve essere interamente in italiano.
 
-Basati principalmente sulle immagini. Usa le informazioni aggiuntive solo quando sono realmente pertinenti. Se un aspetto non è valutabile con affidabilità dalla foto, dichiaralo chiaramente e formula solo stime prudenti.
+Basati principalmente sull'immagine. Usa le informazioni aggiuntive solo quando sono realmente pertinenti. Se un aspetto non è valutabile con affidabilità dalla foto, dichiaralo chiaramente e formula solo stime prudenti.
 
-IMPORTANTE: le fotografie non sono state inviate tramite questo sito. L'utente le caricherà manualmente in ChatGPT insieme a questo prompt. Considera solo le immagini effettivamente presenti nella chat.
+IMPORTANTE: la fotografia non è stata inviata tramite questo sito. L'utente la caricherà manualmente in ChatGPT insieme a questo prompt. Considera solo le immagini effettivamente presenti nella chat.
 
 INFORMAZIONI DEL SOGGETTO
 
@@ -1329,15 +540,12 @@ Fumatore: ${valore("fumo")}
 Consumo di alcol: ${valore("alcol")}
 Attività fisica: ${valore("sport")}
 Routine skincare: ${valore("skincare")}
-Foto disponibili dichiarate: ${valore("foto")}
-Foto caricate nel sito: ${countPhotos()}
+Foto caricata nel sito: ${uploadedPhoto ? "Sì, una foto frontale" : "No / da caricare manualmente in ChatGPT"}
 
 OBIETTIVO
 
 Crea un report estetico del volto dall'aspetto premium, elegante e professionale.
-
 L'obiettivo è evidenziare sia i punti di forza sia le aree migliorabili, offrendo indicazioni concrete e realistiche per massimizzare il potenziale estetico naturale del soggetto.
-
 Il report non deve essere offensivo, giudicante o eccessivamente lusinghiero. Deve sembrare una consulenza professionale, sobria, credibile e costruttiva.
 
 STILE VISIVO DEL REPORT
@@ -1364,7 +572,6 @@ Se la foto non è frontale o non permette un'analisi precisa, dichiaralo chiaram
 ANALISI ESTETICA DETTAGLIATA
 
 Analizza in modo onesto, realistico e costruttivo il potenziale estetico del soggetto.
-
 Assegna un punteggio da 1 a 10, anche con decimali, per ogni categoria:
 
 1. Simmetria facciale
@@ -1391,9 +598,7 @@ Per ogni categoria fornisci:
 PUNTEGGIO COMPLESSIVO
 
 Assegna un punteggio finale chiamato:
-
 POTENZIALE DI ATTRATTIVITÀ
-
 Scala da 1 a 10.
 
 ARMOCROMIA / CROMOESTETICA
@@ -1442,29 +647,19 @@ return testo;
 }
 
 async function copyPrompt(){
-    const msg = document.getElementById("copyMessage");
     const prompt = generaPrompt();
-
     try{
         await navigator.clipboard.writeText(prompt);
-        msg.style.display = "block";
-        msg.textContent = "Prompt copiato negli appunti.";
-        setTimeout(() => { msg.style.display = "none"; }, 2600);
+        showMessage("Prompt copiato negli appunti. Ora carica la foto su ChatGPT e incollalo.");
         return true;
     }catch(e){
         const hidden = document.getElementById("hiddenPrompt");
         hidden.focus();
         hidden.select();
         document.execCommand("copy");
-        msg.style.display = "block";
-        msg.textContent = "Prompt copiato. Se non funziona, riprova dal browser.";
-        setTimeout(() => { msg.style.display = "none"; }, 2600);
+        showMessage("Prompt copiato. Se non funziona, riprova dal browser.");
         return true;
     }
-}
-
-async function copyPromptOnly(){
-    await copyPrompt();
 }
 
 async function copyAndOpenChatGPT(){
@@ -1474,33 +669,27 @@ async function copyAndOpenChatGPT(){
 
 function resetCampi(){
     document.querySelectorAll("input, select").forEach(el => {
-        if(el.type === "file"){
-            el.value = "";
-        } else if(el.tagName === "SELECT"){
-            el.selectedIndex = 0;
-        } else {
-            el.value = "";
-        }
+        if(el.type === "file") el.value = "";
+        else if(el.tagName === "SELECT") el.selectedIndex = 0;
+        else el.value = "";
     });
 
-    document.querySelectorAll(".preview-img").forEach(img => {
-        img.src = "";
-        img.style.display = "none";
-    });
+    uploadedPhoto = false;
+    if(uploadedPhotoURL) URL.revokeObjectURL(uploadedPhotoURL);
+    uploadedPhotoURL = null;
 
-    document.querySelectorAll(".upload-placeholder").forEach(ph => {
-        ph.style.display = "block";
-    });
-
-    photoState.front = false;
-    photoState.right = false;
-    photoState.left = false;
-
+    document.getElementById("facePreview").src = "";
+    document.getElementById("facePreview").style.display = "none";
+    document.getElementById("heroUserPhoto").src = "";
+    document.getElementById("heroUserPhoto").classList.remove("show");
+    document.getElementById("heroOverlay").style.display = "none";
+    document.getElementById("uploadPlaceholder").style.display = "block";
+    document.getElementById("uploadStatus").textContent = "Foto non caricata";
+    document.getElementById("uploadStatus").classList.remove("ok");
+    document.getElementById("genderTabs").style.opacity = "1";
+    showGender("male");
     document.getElementById("copyMessage").style.display = "none";
-    updatePhotoStatus();
 }
-
-updatePhotoStatus();
 </script>
 
 </body>
