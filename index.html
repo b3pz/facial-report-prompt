@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -46,14 +47,8 @@ h1{
     gap:20px;
 }
 
-input,select,textarea{
-    width:100%;
-    padding:15px;
-    border:1px solid #ddd;
-    border-radius:12px;
-    font-size:15px;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
+.field{
+    margin-bottom:18px;
 }
 
 label{
@@ -63,8 +58,14 @@ label{
     display:block;
 }
 
-.field{
-    margin-bottom:18px;
+input,select,textarea{
+    width:100%;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:15px;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
 }
 
 button{
@@ -76,14 +77,19 @@ button{
     cursor:pointer;
     font-size:16px;
     margin-right:10px;
+    margin-top:10px;
 }
 
 button.secondary{
     background:#333;
 }
 
+button.reset{
+    background:#777;
+}
+
 textarea{
-    height:420px;
+    height:460px;
     line-height:1.5;
 }
 
@@ -97,6 +103,8 @@ textarea{
 @media(max-width:700px){
     h1{font-size:34px;}
     .grid{grid-template-columns:1fr;}
+    .card{padding:25px;}
+    button{width:100%; margin-bottom:10px;}
 }
 </style>
 </head>
@@ -173,21 +181,33 @@ Generatore di prompt per report estetico premium del volto, armocromia e consule
 <label>Consumo di alcol</label>
 <select id="alcol">
 <option value="">Non specificato</option>
+<option>Nessuno</option>
 <option>Basso</option>
 <option>Moderato</option>
 <option>Elevato</option>
-<option>Nessuno</option>
 </select>
 </div>
 
 <div class="field">
 <label>Attività fisica</label>
-<input id="sport" placeholder="Es. palestra 2 volte a settimana">
+<select id="sport">
+<option value="">Non specificato</option>
+<option>Sedentario</option>
+<option>1-2 volte a settimana</option>
+<option>3-4 volte a settimana</option>
+<option>5 o più volte a settimana</option>
+</select>
 </div>
 
 <div class="field">
 <label>Routine skincare</label>
-<input id="skincare" placeholder="Es. nessuna / detergente + crema">
+<select id="skincare">
+<option value="">Non specificato</option>
+<option>Nessuna</option>
+<option>Base: detergente / crema</option>
+<option>Regolare: detergente, crema, SPF</option>
+<option>Avanzata: routine completa con attivi</option>
+</select>
 </div>
 
 <div class="field">
@@ -205,6 +225,7 @@ Generatore di prompt per report estetico premium del volto, armocromia e consule
 
 <button onclick="generaPrompt()">Genera Prompt</button>
 <button class="secondary" onclick="copiaPrompt()">Copia Prompt</button>
+<button class="reset" onclick="resetCampi()">Reset Campi</button>
 </div>
 
 <div class="card">
@@ -225,7 +246,7 @@ function generaPrompt(){
 
 let testo = `Crea un report estetico premium del volto basato sulle fotografie caricate.
 
-Il report deve essere interamente in italiano.
+Il risultato deve essere interamente in italiano.
 
 Basati principalmente sulle immagini. Usa le informazioni aggiuntive solo quando sono realmente pertinenti. Se un aspetto non è valutabile con affidabilità dalla foto, dichiaralo chiaramente e formula solo stime prudenti.
 
@@ -296,6 +317,20 @@ POTENZIALE DI ATTRATTIVITÀ
 Scala da 1 a 10.
 Il punteggio deve essere realistico e coerente con le valutazioni precedenti.
 
+PUNTI DI FORZA
+
+Evidenzia le caratteristiche più favorevoli del volto.
+
+AREE MIGLIORABILI
+
+Individua gli aspetti che offrirebbero il miglior ritorno estetico se ottimizzati.
+
+STIMA DELL'ETÀ APPARENTE
+
+Indica:
+- età apparente stimata;
+- eventuale differenza rispetto all'età cronologica, se conosciuta.
+
 ARMOCROMIA / CROMOESTETICA
 
 Stima la stagione cromatica più probabile sulla base di:
@@ -303,15 +338,6 @@ Stima la stagione cromatica più probabile sulla base di:
 - colore degli occhi;
 - colore dei capelli;
 - contrasto complessivo.
-
-Indica:
-- stagione cromatica più probabile;
-- sottotono della pelle;
-- livello di contrasto;
-- colori migliori;
-- colori da evitare;
-- colori consigliati per magliette, camicie, giacche, completi, occhiali e accessori;
-- metalli più valorizzanti.
 
 Scegli tra:
 - Primavera Chiara
@@ -327,9 +353,18 @@ Scegli tra:
 - Inverno Freddo
 - Inverno Profondo
 
+Indica:
+- stagione cromatica più probabile;
+- sottotono della pelle;
+- livello di contrasto;
+- colori migliori;
+- colori da evitare;
+- colori consigliati per magliette, camicie, giacche, completi, occhiali e accessori;
+- metalli più valorizzanti.
+
 RACCOMANDAZIONI PRATICHE
 
-Fornisci suggerimenti concreti e realisticamente raggiungibili su:
+Fornisci suggerimenti concreti, realistici e raggiungibili su:
 
 - taglio di capelli e styling;
 - barba e grooming del viso;
@@ -356,12 +391,29 @@ document.getElementById("prompt").value = testo;
 
 function copiaPrompt(){
     let prompt = document.getElementById("prompt");
+
+    if(prompt.value.trim() === ""){
+        alert("Prima genera il prompt.");
+        return;
+    }
+
     prompt.select();
     prompt.setSelectionRange(0, 99999);
     navigator.clipboard.writeText(prompt.value);
     alert("Prompt copiato negli appunti.");
 }
+
+function resetCampi(){
+    document.querySelectorAll("input, select, textarea").forEach(el => {
+        if(el.tagName === "SELECT"){
+            el.selectedIndex = 0;
+        } else {
+            el.value = "";
+        }
+    });
+}
 </script>
 
 </body>
 </html>
+```
