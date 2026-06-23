@@ -73,7 +73,7 @@ textarea{
     resize:vertical;
 }
 
-button{
+button, .chatgpt-button{
     background:#000;
     color:white;
     border:none;
@@ -83,6 +83,8 @@ button{
     font-size:16px;
     margin-right:10px;
     margin-top:10px;
+    text-decoration:none;
+    display:inline-block;
 }
 
 button.secondary{
@@ -101,6 +103,25 @@ button.reset{
     font-weight:600;
 }
 
+.steps{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:20px;
+}
+
+.step{
+    background:#f5f5f7;
+    border-radius:16px;
+    padding:18px;
+    border:1px solid #e5e5e5;
+}
+
+.step strong{
+    display:block;
+    margin-bottom:8px;
+}
+
 .footer{
     text-align:center;
     color:#777;
@@ -111,8 +132,9 @@ button.reset{
 @media(max-width:700px){
     h1{font-size:34px;}
     .grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
     .card{padding:25px;}
-    button{width:100%; margin-bottom:10px;}
+    button, .chatgpt-button{width:100%; margin-bottom:10px; text-align:center;}
 }
 </style>
 </head>
@@ -123,6 +145,36 @@ button.reset{
 
 <div class="subtitle">
 Generatore di prompt per report estetico premium del volto, armocromia e consulenza d’immagine.
+</div>
+
+<div class="card">
+<h2>Come utilizzare il report</h2>
+
+<div class="steps">
+<div class="step">
+<strong>1. Inserisci i dati</strong>
+Compila le informazioni facoltative del soggetto. Se non conosci un dato, lascialo vuoto.
+</div>
+
+<div class="step">
+<strong>2. Genera il prompt</strong>
+Clicca su “Genera Prompt” per creare il testo personalizzato.
+</div>
+
+<div class="step">
+<strong>3. Copia il prompt</strong>
+Clicca su “Copia Prompt” per copiarlo negli appunti.
+</div>
+
+<div class="step">
+<strong>4. Apri ChatGPT</strong>
+Carica le foto del volto, incolla il prompt e genera il report.
+</div>
+</div>
+
+<a class="chatgpt-button" href="https://chatgpt.com/" target="_blank">
+Apri ChatGPT
+</a>
 </div>
 
 <div class="card">
@@ -360,16 +412,6 @@ PUNTI DI FORZA
 
 Individua le caratteristiche estetiche più favorevoli del volto.
 
-Esempi:
-- buona armonia generale;
-- occhi espressivi;
-- naso proporzionato;
-- mandibola definita;
-- pelle uniforme;
-- barba curata;
-- buone proporzioni;
-- buon potenziale fotografico.
-
 AREE CON MAGGIOR MARGINE DI MIGLIORAMENTO
 
 Individua gli aspetti che offrirebbero il miglior ritorno estetico se ottimizzati.
@@ -410,133 +452,26 @@ Scegli la categoria più probabile tra:
 - Inverno Profondo
 
 Fornisci:
-
 1. Stagione cromatica più probabile
-2. Sottotono della pelle:
-   - caldo
-   - neutro caldo
-   - neutro
-   - neutro freddo
-   - freddo
-3. Livello di contrasto:
-   - basso
-   - medio
-   - alto
+2. Sottotono della pelle
+3. Livello di contrasto
 4. Colori che valorizzano maggiormente il viso
 5. Colori da evitare
-6. Migliori colori per:
-   - t-shirt;
-   - camicie;
-   - maglioni;
-   - giacche;
-   - completi eleganti;
-   - montature degli occhiali;
-   - accessori.
-7. Metalli più valorizzanti:
-   - oro;
-   - argento;
-   - bronzo;
-   - oro rosa;
-   - canna di fucile.
+6. Migliori colori per t-shirt, camicie, maglioni, giacche, completi eleganti, montature degli occhiali e accessori
+7. Metalli più valorizzanti
 
 RACCOMANDAZIONI PRATICHE
 
 Fornisci suggerimenti concreti, realistici e raggiungibili su:
-
-TAGLIO DI CAPELLI E STYLING
-
-Suggerisci:
-- tagli più adatti alla forma del volto;
-- lunghezze consigliate;
-- styling quotidiano;
-- eventuali errori da evitare;
-- come valorizzare attaccatura, volume e densità.
-
-BARBA E GROOMING DEL VISO
-
-Suggerisci:
-- lunghezza ideale;
-- contorni consigliati;
-- zone da alleggerire o valorizzare;
-- rapporto tra barba, mandibola e mento;
-- frequenza di manutenzione.
-
-SKINCARE
-
-Proponi una routine semplice e realistica:
-- detergente;
-- crema idratante;
-- protezione solare;
-- eventuali attivi specifici solo se pertinenti.
-
-Evita diagnosi dermatologiche.
-
-SOPRACCIGLIA
-
-Valuta:
-- forma;
-- densità;
-- simmetria;
-- definizione.
-
-Suggerisci solo miglioramenti naturali.
-
-POSTURA ED ESPRESSIONE FACCIALE
-
-Fornisci consigli su:
-- postura del collo;
-- posizione del mento;
-- rilassamento del volto;
-- sorriso;
-- espressione fotografica;
-- tensioni facciali da evitare.
-
-COMPOSIZIONE CORPOREA E GESTIONE DEL PESO
-
-Solo se pertinente rispetto ai dati forniti o alla foto, valuta:
-- impatto del peso sulla definizione del volto;
-- zona collo/mandibola;
-- eventuale margine di miglioramento nella definizione facciale.
-
-Evita obiettivi irrealistici, estremi o non salutari.
-
-STILE PERSONALE E ABBIGLIAMENTO
-
-Suggerisci:
-- vestibilità;
-- scolli e colletti più valorizzanti;
-- colori coerenti con l'armocromia;
-- montature degli occhiali;
-- accessori;
-- direzione stilistica generale.
-
-FOTOGRAFIA
-
-Fornisci indicazioni pratiche per ottenere fotografie più valorizzanti:
-- angolazione;
-- altezza camera;
-- luce;
-- distanza;
-- lunghezza focale consigliata;
-- posizione del viso;
-- espressione;
-- sfondo;
-- errori da evitare.
-
-TRATTAMENTI ESTETICI NON INVASIVI O MINIMAMENTE INVASIVI
-
-Solo se realmente pertinenti, valuta:
-- skincare professionale;
-- pulizia viso;
-- peeling chimici;
-- microneedling;
-- laser;
-- botox;
-- filler.
-
-Non proporre chirurgia salvo casi particolari ed evidenti.
-Non fare diagnosi mediche.
-Presenta sempre questi interventi come opzioni facoltative da valutare con professionisti qualificati.
+- taglio di capelli e styling;
+- barba e grooming del viso;
+- skincare;
+- sopracciglia;
+- postura ed espressione facciale;
+- composizione corporea e gestione del peso, solo se pertinente;
+- stile personale e abbigliamento;
+- tecniche per ottenere fotografie più valorizzanti;
+- eventuali trattamenti estetici non invasivi o minimamente invasivi, solo se realmente pertinenti.
 
 STRUTTURA DEL REPORT FINALE
 
@@ -556,23 +491,9 @@ Organizza il report con queste sezioni:
 
 TONO
 
-Mantieni un tono:
-- elegante;
-- professionale;
-- diretto;
-- costruttivo;
-- realistico;
-- credibile;
-- non offensivo.
+Mantieni un tono elegante, professionale, diretto, costruttivo, realistico e credibile.
 
-Evita:
-- complimenti eccessivi;
-- punteggi irrealisticamente alti;
-- giudizi volgari;
-- diagnosi mediche;
-- promesse di trasformazioni estreme.
-
-Il risultato finale deve sembrare un autentico report estetico premium realizzato da un consulente esperto di immagine, armonia facciale e cromoestetica.`;
+Evita complimenti eccessivi, punteggi irrealisticamente alti, giudizi volgari, diagnosi mediche e promesse di trasformazioni estreme.`;
 
 document.getElementById("prompt").value = testo;
 }
