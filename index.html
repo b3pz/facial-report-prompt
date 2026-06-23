@@ -684,6 +684,58 @@ textarea{
     line-height:1.55;
 }
 
+.launch-card textarea#prompt{
+    position:absolute;
+    left:-9999px;
+    width:1px;
+    height:1px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.launch-panel{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:24px;
+    align-items:stretch;
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:24px;
+    background:linear-gradient(135deg,#fff,#fbf6ef);
+}
+
+.launch-copy h3{
+    margin:0 0 10px;
+    font-family:'Playfair Display',serif;
+    font-size:30px;
+}
+
+.launch-copy p{
+    margin:0 0 16px;
+    color:var(--muted);
+    line-height:1.65;
+    font-size:14px;
+}
+
+.launch-copy ul{
+    margin:0;
+    padding-left:18px;
+    color:#333;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.launch-actions{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:12px;
+}
+
+.launch-actions .btn{
+    width:100%;
+}
+
 @media(max-width:900px){
     .hero{
         min-height:auto;
@@ -770,7 +822,17 @@ textarea{
     .footer-inner{
         display:block;
     }
+
+    .launch-panel{
+        grid-template-columns:1fr;
+        padding:20px;
+    }
+
+    .launch-copy h3{
+        font-size:26px;
+    }
 }
+
 </style>
 </head>
 
@@ -994,8 +1056,8 @@ textarea{
     </div>
 
     <div class="actions">
-        <button class="btn btn-dark" onclick="generaPrompt()">✦ Genera Prompt</button>
-        <button class="btn btn-dark" onclick="copiaPrompt()">⧉ Copia Prompt</button>
+        <button class="btn btn-gold" onclick="apriChatGPT()">🚀 Copia prompt e apri ChatGPT</button>
+        <button class="btn btn-dark" onclick="copiaPrompt()">⧉ Copia solo prompt</button>
         <button class="btn btn-grey" onclick="resetCampi()">↺ Reset Campi</button>
     </div>
 
@@ -1069,24 +1131,36 @@ textarea{
     </div>
 </div>
 
-<div class="card">
+<div class="card launch-card">
     <div class="section-head">
         <div class="section-title">
-            <div class="icon-bubble">□</div>
+            <div class="icon-bubble">🚀</div>
             <div>
-                <h2>Prompt generato</h2>
-                <div class="hint">Copialo e incollalo in ChatGPT insieme alle fotografie del volto.</div>
+                <h2>Pronto per generare il report</h2>
+                <div class="hint">Il prompt viene creato e copiato in automatico. L'utente non deve leggerlo né modificarlo.</div>
             </div>
-        </div>
-
-        <div class="prompt-toolbar">
-            <a class="btn btn-green" href="https://chatgpt.com/" target="_blank">Apri ChatGPT</a>
         </div>
     </div>
 
-    <textarea id="prompt" placeholder="Il prompt verrà generato qui..."></textarea>
-</div>
+    <div class="launch-panel">
+        <div class="launch-copy">
+            <h3>Flusso finale</h3>
+            <p>Compila i dati, carica le foto, poi premi il pulsante principale. ChatGPT si aprirà in una nuova scheda: a quel punto basterà incollare il prompt e caricare le stesse immagini.</p>
+            <ul>
+                <li>Prompt nascosto all'utente finale</li>
+                <li>Nessuna API richiesta</li>
+                <li>Nessuna foto inviata dal sito</li>
+            </ul>
+        </div>
 
+        <div class="launch-actions">
+            <button class="btn btn-gold" onclick="apriChatGPT()">🚀 Copia prompt e apri ChatGPT</button>
+            <button class="btn btn-dark" onclick="copiaPrompt()">⧉ Copia solo prompt</button>
+        </div>
+    </div>
+
+    <textarea id="prompt" aria-hidden="true" tabindex="-1"></textarea>
+</div>
 </main>
 
 <footer class="footer">
@@ -1341,6 +1415,31 @@ setupPreview("frontPhoto", "frontPreview", "frontBox", "frontStatus", "Frontale 
 setupPreview("rightPhoto", "rightPreview", "rightBox", "rightStatus", "Profilo destro caricato", "Profilo destro non caricato");
 setupPreview("leftPhoto", "leftPreview", "leftBox", "leftStatus", "Profilo sinistro caricato", "Profilo sinistro non caricato");
 
+
+function apriChatGPT(){
+    generaPrompt();
+    const prompt = document.getElementById("prompt");
+    const msg = document.getElementById("copyMessage");
+
+    if(!prompt.value.trim()){
+        msg.style.display = "block";
+        msg.textContent = "Prima genera il prompt.";
+        setTimeout(() => { msg.style.display = "none"; }, 2200);
+        return;
+    }
+
+    navigator.clipboard.writeText(prompt.value).then(() => {
+        msg.style.display = "block";
+        msg.textContent = "Prompt copiato. Ora incollalo in ChatGPT insieme alle fotografie.";
+        window.open("https://chatgpt.com/", "_blank");
+        setTimeout(() => { msg.style.display = "none"; }, 4500);
+    }).catch(() => {
+        msg.style.display = "block";
+        msg.textContent = "Non riesco a copiare automaticamente. Usa il pulsante 'Copia solo prompt'.";
+        setTimeout(() => { msg.style.display = "none"; }, 4500);
+    });
+}
+
 function resetCampi(){
     document.querySelectorAll("input, select, textarea").forEach(el => {
         if(el.tagName === "SELECT"){
@@ -1379,4 +1478,3 @@ function resetCampi(){
 
 </body>
 </html>
-```
