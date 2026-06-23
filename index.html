@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -534,6 +535,148 @@ textarea{
     gap:18px;
 }
 
+.upload-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.upload-box{
+    position:relative;
+    border:1.5px dashed rgba(215,168,110,.65);
+    border-radius:24px;
+    padding:22px;
+    background:linear-gradient(135deg,#fff,#fbf6ef);
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    transition:.25s ease;
+    overflow:hidden;
+}
+
+.upload-box:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 40px rgba(58,43,27,.10);
+}
+
+.upload-box.has-image{
+    border-style:solid;
+    padding:0;
+    min-height:260px;
+}
+
+.upload-box input{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    cursor:pointer;
+    z-index:5;
+}
+
+.upload-icon{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--gold2),var(--gold));
+    color:#1d1207;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    margin-bottom:14px;
+}
+
+.upload-box h3{
+    margin:0 0 8px;
+    font-size:17px;
+}
+
+.upload-box p{
+    margin:0;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+}
+
+.preview{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:absolute;
+    inset:0;
+    display:none;
+    z-index:1;
+}
+
+.upload-overlay{
+    position:absolute;
+    inset:auto 12px 12px 12px;
+    z-index:3;
+    background:rgba(10,10,12,.68);
+    color:white;
+    border:1px solid rgba(255,255,255,.16);
+    backdrop-filter:blur(12px);
+    border-radius:16px;
+    padding:10px 12px;
+    display:none;
+    text-align:left;
+}
+
+.upload-box.has-image .upload-overlay{
+    display:block;
+}
+
+.upload-box.has-image .upload-placeholder{
+    opacity:0;
+}
+
+.upload-overlay strong{
+    display:block;
+    font-size:13px;
+}
+
+.upload-overlay span{
+    color:rgba(255,255,255,.72);
+    font-size:12px;
+}
+
+.photo-status{
+    margin-top:20px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.status-pill{
+    padding:10px 13px;
+    border-radius:999px;
+    background:#fff;
+    border:1px solid var(--line);
+    color:var(--muted);
+    font-size:13px;
+    font-weight:800;
+}
+
+.status-pill.active{
+    background:#eefaf6;
+    border-color:#bcebdc;
+    color:#08745a;
+}
+
+.privacy-note{
+    margin-top:18px;
+    padding:14px 16px;
+    border-radius:18px;
+    background:#fff8ed;
+    border:1px solid #f0dfc5;
+    color:#6c4c22;
+    font-size:13px;
+    line-height:1.55;
+}
+
 @media(max-width:900px){
     .hero{
         min-height:auto;
@@ -590,6 +733,15 @@ textarea{
 
     .grid{
         grid-template-columns:1fr;
+    }
+
+    .upload-grid{
+        grid-template-columns:1fr;
+    }
+
+    .upload-box,
+    .upload-box.has-image{
+        min-height:230px;
     }
 
     .actions{
@@ -841,6 +993,73 @@ textarea{
     <div id="copyMessage" class="notice">Prompt copiato negli appunti.</div>
 </div>
 
+<div class="card" id="photos">
+    <div class="section-head">
+        <div class="section-title">
+            <div class="icon-bubble">📷</div>
+            <div>
+                <h2>Fotografie del volto</h2>
+                <div class="hint">Carica le foto che userai poi su ChatGPT. L'anteprima resta solo nel browser.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="upload-grid">
+        <label class="upload-box" id="frontBox">
+            <input type="file" id="frontPhoto" accept="image/*">
+            <img id="frontPreview" class="preview" alt="Anteprima foto frontale">
+            <div class="upload-placeholder">
+                <div class="upload-icon">☉</div>
+                <h3>Foto frontale</h3>
+                <p>Consigliata: luce naturale, volto centrato, espressione neutra.</p>
+            </div>
+            <div class="upload-overlay">
+                <strong>Foto frontale caricata</strong>
+                <span>Clicca per sostituirla</span>
+            </div>
+        </label>
+
+        <label class="upload-box" id="rightBox">
+            <input type="file" id="rightPhoto" accept="image/*">
+            <img id="rightPreview" class="preview" alt="Anteprima profilo destro">
+            <div class="upload-placeholder">
+                <div class="upload-icon">↗</div>
+                <h3>Profilo destro</h3>
+                <p>Opzionale, utile per naso, mento e linea mandibolare.</p>
+            </div>
+            <div class="upload-overlay">
+                <strong>Profilo destro caricato</strong>
+                <span>Clicca per sostituirlo</span>
+            </div>
+        </label>
+
+        <label class="upload-box" id="leftBox">
+            <input type="file" id="leftPhoto" accept="image/*">
+            <img id="leftPreview" class="preview" alt="Anteprima profilo sinistro">
+            <div class="upload-placeholder">
+                <div class="upload-icon">↖</div>
+                <h3>Profilo sinistro</h3>
+                <p>Opzionale, migliora la valutazione di simmetrie e proporzioni.</p>
+            </div>
+            <div class="upload-overlay">
+                <strong>Profilo sinistro caricato</strong>
+                <span>Clicca per sostituirlo</span>
+            </div>
+        </label>
+    </div>
+
+    <div class="photo-status">
+        <div class="status-pill" id="frontStatus">Frontale non caricato</div>
+        <div class="status-pill" id="rightStatus">Profilo destro non caricato</div>
+        <div class="status-pill" id="leftStatus">Profilo sinistro non caricato</div>
+        <div class="status-pill" id="analysisStatus">Livello analisi: non definito</div>
+    </div>
+
+    <div class="privacy-note">
+        Le foto caricate qui vengono mostrate solo come anteprima locale nel browser: non vengono inviate a nessun server da GitHub Pages. Per generare il report dovrai caricarle manualmente su ChatGPT insieme al prompt copiato.
+    </div>
+</div>
+
 <div class="card">
     <div class="section-head">
         <div class="section-title">
@@ -1035,6 +1254,77 @@ function copiaPrompt(){
     });
 }
 
+function setupPreview(inputId, previewId, boxId, statusId, activeText, inactiveText){
+    const input = document.getElementById(inputId);
+    const preview = document.getElementById(previewId);
+    const box = document.getElementById(boxId);
+    const status = document.getElementById(statusId);
+
+    input.addEventListener("change", function(){
+        const file = this.files[0];
+
+        if(!file){
+            preview.removeAttribute("src");
+            preview.style.display = "none";
+            box.classList.remove("has-image");
+            status.classList.remove("active");
+            status.textContent = inactiveText;
+            aggiornaFotoDisponibili();
+            return;
+        }
+
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+        box.classList.add("has-image");
+        status.classList.add("active");
+        status.textContent = activeText;
+        aggiornaFotoDisponibili();
+    });
+}
+
+function fotoCaricata(id){
+    const input = document.getElementById(id);
+    return input && input.files && input.files.length > 0;
+}
+
+function aggiornaFotoDisponibili(){
+    const front = fotoCaricata("frontPhoto");
+    const right = fotoCaricata("rightPhoto");
+    const left = fotoCaricata("leftPhoto");
+    const fotoSelect = document.getElementById("foto");
+    const analysisStatus = document.getElementById("analysisStatus");
+
+    if(front && right && left){
+        fotoSelect.value = "Frontale + entrambi i profili";
+        analysisStatus.textContent = "Livello analisi: completo";
+        analysisStatus.classList.add("active");
+    } else if(front && right){
+        fotoSelect.value = "Frontale + profilo destro";
+        analysisStatus.textContent = "Livello analisi: avanzato";
+        analysisStatus.classList.add("active");
+    } else if(front && left){
+        fotoSelect.value = "Frontale + profilo sinistro";
+        analysisStatus.textContent = "Livello analisi: avanzato";
+        analysisStatus.classList.add("active");
+    } else if(front){
+        fotoSelect.value = "Solo foto frontale";
+        analysisStatus.textContent = "Livello analisi: base";
+        analysisStatus.classList.add("active");
+    } else if(right || left){
+        fotoSelect.value = "Più foto con luci diverse";
+        analysisStatus.textContent = "Livello analisi: parziale";
+        analysisStatus.classList.add("active");
+    } else {
+        fotoSelect.selectedIndex = 0;
+        analysisStatus.textContent = "Livello analisi: non definito";
+        analysisStatus.classList.remove("active");
+    }
+}
+
+setupPreview("frontPhoto", "frontPreview", "frontBox", "frontStatus", "Frontale caricato", "Frontale non caricato");
+setupPreview("rightPhoto", "rightPreview", "rightBox", "rightStatus", "Profilo destro caricato", "Profilo destro non caricato");
+setupPreview("leftPhoto", "leftPreview", "leftBox", "leftStatus", "Profilo sinistro caricato", "Profilo sinistro non caricato");
+
 function resetCampi(){
     document.querySelectorAll("input, select, textarea").forEach(el => {
         if(el.tagName === "SELECT"){
@@ -1044,6 +1334,29 @@ function resetCampi(){
         }
     });
 
+    [
+        ["frontPhoto", "frontPreview", "frontBox", "frontStatus", "Frontale non caricato"],
+        ["rightPhoto", "rightPreview", "rightBox", "rightStatus", "Profilo destro non caricato"],
+        ["leftPhoto", "leftPreview", "leftBox", "leftStatus", "Profilo sinistro non caricato"]
+    ].forEach(([inputId, previewId, boxId, statusId, inactiveText]) => {
+        const input = document.getElementById(inputId);
+        const preview = document.getElementById(previewId);
+        const box = document.getElementById(boxId);
+        const status = document.getElementById(statusId);
+
+        if(input) input.value = "";
+        if(preview){
+            preview.removeAttribute("src");
+            preview.style.display = "none";
+        }
+        if(box) box.classList.remove("has-image");
+        if(status){
+            status.classList.remove("active");
+            status.textContent = inactiveText;
+        }
+    });
+
+    aggiornaFotoDisponibili();
     document.getElementById("copyMessage").style.display = "none";
 }
 </script>
