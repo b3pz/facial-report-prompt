@@ -11,19 +11,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 body{
     font-family:'Inter',sans-serif;
     background:#f5f5f7;
     color:#1d1d1f;
-    max-width:900px;
+    max-width:1000px;
     margin:auto;
     padding:40px 20px;
 }
 
 h1{
     text-align:center;
-    font-size:48px;
+    font-size:46px;
     margin-bottom:10px;
 }
 
@@ -35,140 +34,333 @@ h1{
 
 .card{
     background:white;
-    border-radius:20px;
+    border-radius:22px;
     padding:35px;
     margin-bottom:30px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    box-shadow:0 8px 30px rgba(0,0,0,0.06);
 }
 
-h2{
-    margin-top:0;
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
 }
 
-input,select{
+input,select,textarea{
     width:100%;
     padding:15px;
-    margin-top:10px;
-    margin-bottom:20px;
     border:1px solid #ddd;
     border-radius:12px;
     font-size:15px;
     box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+label{
+    font-size:14px;
+    color:#555;
+    margin-bottom:6px;
+    display:block;
+}
+
+.field{
+    margin-bottom:18px;
 }
 
 button{
-    background:black;
+    background:#000;
     color:white;
     border:none;
     padding:16px 30px;
     border-radius:14px;
     cursor:pointer;
     font-size:16px;
+    margin-right:10px;
 }
 
-button:hover{
-    opacity:0.9;
+button.secondary{
+    background:#333;
 }
 
 textarea{
-    width:100%;
-    height:300px;
-    border-radius:15px;
-    padding:20px;
-    box-sizing:border-box;
-    border:1px solid #ddd;
+    height:420px;
+    line-height:1.5;
 }
 
 .footer{
     text-align:center;
     color:#777;
-    font-size:14px;
+    font-size:13px;
+    margin-top:30px;
 }
 
+@media(max-width:700px){
+    h1{font-size:34px;}
+    .grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
+
 <body>
 
 <h1>Premium Facial Aesthetic Report</h1>
 
 <div class="subtitle">
-Analisi estetica professionale del volto.
+Generatore di prompt per report estetico premium del volto, armocromia e consulenza d’immagine.
 </div>
 
 <div class="card">
-
 <h2>Informazioni del soggetto</h2>
 
+<div class="grid">
+
+<div class="field">
+<label>Sesso</label>
 <select id="sesso">
+<option value="">Non specificato</option>
 <option>Maschio</option>
 <option>Femmina</option>
+<option>Altro / Preferisco non indicarlo</option>
 </select>
+</div>
 
-<input id="eta" placeholder="Età">
+<div class="field">
+<label>Età</label>
+<input id="eta" placeholder="Es. 35">
+</div>
 
-<input id="altezza" placeholder="Altezza (cm)">
+<div class="field">
+<label>Altezza</label>
+<input id="altezza" placeholder="Es. 168 cm">
+</div>
 
-<input id="peso" placeholder="Peso (kg)">
+<div class="field">
+<label>Peso</label>
+<input id="peso" placeholder="Es. 68 kg">
+</div>
 
-<input id="occhi" placeholder="Colore occhi">
+<div class="field">
+<label>Colore occhi</label>
+<input id="occhi" placeholder="Es. marroni">
+</div>
 
-<input id="capelli" placeholder="Colore capelli">
+<div class="field">
+<label>Colore capelli</label>
+<input id="capelli" placeholder="Es. castani">
+</div>
 
-<input id="occhiali" placeholder="Occhiali (sì/no)">
+<div class="field">
+<label>Occhiali</label>
+<select id="occhiali">
+<option value="">Non specificato</option>
+<option>Sì</option>
+<option>No</option>
+<option>A volte</option>
+</select>
+</div>
 
-<input id="fumo" placeholder="Fumatore (sì/no)">
+<div class="field">
+<label>Fumatore</label>
+<select id="fumo">
+<option value="">Non specificato</option>
+<option>Sì</option>
+<option>No</option>
+<option>Occasionale</option>
+</select>
+</div>
 
-<input id="sport" placeholder="Attività fisica">
+<div class="field">
+<label>Consumo di alcol</label>
+<select id="alcol">
+<option value="">Non specificato</option>
+<option>Basso</option>
+<option>Moderato</option>
+<option>Elevato</option>
+<option>Nessuno</option>
+</select>
+</div>
 
-<button onclick="generaPrompt()">
-Genera Prompt
-</button>
+<div class="field">
+<label>Attività fisica</label>
+<input id="sport" placeholder="Es. palestra 2 volte a settimana">
+</div>
+
+<div class="field">
+<label>Routine skincare</label>
+<input id="skincare" placeholder="Es. nessuna / detergente + crema">
+</div>
+
+<div class="field">
+<label>Foto disponibili</label>
+<select id="foto">
+<option>Solo foto frontale</option>
+<option>Frontale + profilo destro</option>
+<option>Frontale + profilo sinistro</option>
+<option>Frontale + entrambi i profili</option>
+<option>Più foto con luci diverse</option>
+</select>
+</div>
 
 </div>
 
+<button onclick="generaPrompt()">Genera Prompt</button>
+<button class="secondary" onclick="copiaPrompt()">Copia Prompt</button>
+</div>
+
 <div class="card">
-
 <h2>Prompt generato</h2>
-
-<textarea id="prompt"></textarea>
-
+<textarea id="prompt" placeholder="Il prompt verrà generato qui..."></textarea>
 </div>
 
 <div class="footer">
-Le valutazioni sono puramente orientative e non sostituiscono una consulenza medica.
+Le valutazioni sono puramente estetiche e orientative. Non sostituiscono una consulenza medica, dermatologica o psicologica.
 </div>
 
 <script>
+function valore(id){
+    return document.getElementById(id).value || "Non specificato";
+}
 
 function generaPrompt(){
 
-let sesso=document.getElementById("sesso").value;
-let eta=document.getElementById("eta").value;
-let altezza=document.getElementById("altezza").value;
-let peso=document.getElementById("peso").value;
-let occhi=document.getElementById("occhi").value;
-let capelli=document.getElementById("capelli").value;
-let occhiali=document.getElementById("occhiali").value;
-let fumo=document.getElementById("fumo").value;
-let sport=document.getElementById("sport").value;
+let testo = `Crea un report estetico premium del volto basato sulle fotografie caricate.
 
-document.getElementById("prompt").value=
-`INFORMAZIONI DEL SOGGETTO
+Il report deve essere interamente in italiano.
 
-Sesso: ${sesso}
-Età: ${eta}
-Altezza: ${altezza}
-Peso: ${peso}
-Occhi: ${occhi}
-Capelli: ${capelli}
-Occhiali: ${occhiali}
-Fumatore: ${fumo}
-Attività fisica: ${sport}
+Basati principalmente sulle immagini. Usa le informazioni aggiuntive solo quando sono realmente pertinenti. Se un aspetto non è valutabile con affidabilità dalla foto, dichiaralo chiaramente e formula solo stime prudenti.
 
-Crea un report estetico premium del volto basato sulle foto caricate...`;
+INFORMAZIONI DEL SOGGETTO
 
+Sesso: ${valore("sesso")}
+Età: ${valore("eta")}
+Altezza: ${valore("altezza")}
+Peso: ${valore("peso")}
+Colore occhi: ${valore("occhi")}
+Colore capelli: ${valore("capelli")}
+Occhiali: ${valore("occhiali")}
+Fumatore: ${valore("fumo")}
+Consumo di alcol: ${valore("alcol")}
+Attività fisica: ${valore("sport")}
+Routine skincare: ${valore("skincare")}
+Foto disponibili: ${valore("foto")}
+
+STILE DEL REPORT
+
+Crea un report dall'aspetto premium, elegante e professionale.
+Utilizza uno stile editoriale minimalista bianco e nero, con linee sottili, schede dai bordi arrotondati, ampi spazi bianchi, tipografia moderna e un'estetica raffinata ispirata ai dossier di consulenza di lusso.
+
+Il report deve sembrare una valutazione estetica professionale, credibile e basata sull'osservazione oggettiva.
+
+ELEMENTI GRAFICI
+
+Mostra il volto in una vista frontale isolata.
+Integra elementi grafici di analisi facciale:
+- linea centrale di simmetria;
+- terzi del volto;
+- proporzioni principali;
+- punti di riferimento anatomici;
+- indicatori sottili e professionali.
+
+ANALISI ESTETICA
+
+Analizza in modo onesto, realistico e costruttivo il potenziale estetico del soggetto, evitando complimenti eccessivi o valutazioni artificialmente elevate.
+
+Assegna un punteggio da 1 a 10, anche con decimali, per ogni categoria:
+
+- Simmetria facciale
+- Proporzioni e terzi del volto
+- Distanza, forma e armonia degli occhi
+- Armonia e proporzioni del naso
+- Forma e proporzioni delle labbra
+- Definizione della mandibola e della linea mandibolare
+- Proiezione e proporzioni del mento
+- Struttura degli zigomi
+- Qualità, texture e uniformità della pelle
+- Attaccatura dei capelli e densità percepita
+- Acconciatura e styling attuale
+- Cura personale e grooming
+- Armonia complessiva del volto
+- Potenziale fotogenico
+
+Per ogni voce fornisci:
+- punteggio;
+- breve spiegazione;
+- posizionamento rispetto alla media: sotto la media, nella media o sopra la media.
+
+PUNTEGGIO COMPLESSIVO
+
+Assegna un punteggio finale chiamato:
+
+POTENZIALE DI ATTRATTIVITÀ
+
+Scala da 1 a 10.
+Il punteggio deve essere realistico e coerente con le valutazioni precedenti.
+
+ARMOCROMIA / CROMOESTETICA
+
+Stima la stagione cromatica più probabile sulla base di:
+- carnagione;
+- colore degli occhi;
+- colore dei capelli;
+- contrasto complessivo.
+
+Indica:
+- stagione cromatica più probabile;
+- sottotono della pelle;
+- livello di contrasto;
+- colori migliori;
+- colori da evitare;
+- colori consigliati per magliette, camicie, giacche, completi, occhiali e accessori;
+- metalli più valorizzanti.
+
+Scegli tra:
+- Primavera Chiara
+- Primavera Calda
+- Primavera Brillante
+- Estate Chiara
+- Estate Fredda
+- Estate Soft
+- Autunno Soft
+- Autunno Caldo
+- Autunno Profondo
+- Inverno Brillante
+- Inverno Freddo
+- Inverno Profondo
+
+RACCOMANDAZIONI PRATICHE
+
+Fornisci suggerimenti concreti e realisticamente raggiungibili su:
+
+- taglio di capelli e styling;
+- barba e grooming del viso;
+- skincare;
+- sopracciglia;
+- postura ed espressione facciale;
+- composizione corporea e gestione del peso, solo se pertinente;
+- stile personale e abbigliamento;
+- tecniche per ottenere fotografie più valorizzanti;
+- eventuali trattamenti estetici non invasivi o minimamente invasivi, solo se realmente pertinenti.
+
+CONCLUSIONE
+
+Concludi con una sintesi elegante e professionale che evidenzi:
+- punti di forza;
+- aree migliorabili;
+- potenziale estetico naturale;
+- priorità pratiche per valorizzare il volto.
+
+Mantieni un tono elegante, diretto, costruttivo, realistico e professionale.`;
+
+document.getElementById("prompt").value = testo;
 }
 
+function copiaPrompt(){
+    let prompt = document.getElementById("prompt");
+    prompt.select();
+    prompt.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(prompt.value);
+    alert("Prompt copiato negli appunti.");
+}
 </script>
 
 </body>
