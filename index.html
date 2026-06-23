@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -68,6 +67,12 @@ input,select,textarea{
     font-family:'Inter',sans-serif;
 }
 
+textarea{
+    height:700px;
+    line-height:1.6;
+    resize:vertical;
+}
+
 button{
     background:#000;
     color:white;
@@ -88,9 +93,12 @@ button.reset{
     background:#777;
 }
 
-textarea{
-    height:460px;
-    line-height:1.5;
+.copy-message{
+    display:none;
+    margin-top:15px;
+    font-size:14px;
+    color:#111;
+    font-weight:600;
 }
 
 .footer{
@@ -226,6 +234,9 @@ Generatore di prompt per report estetico premium del volto, armocromia e consule
 <button onclick="generaPrompt()">Genera Prompt</button>
 <button class="secondary" onclick="copiaPrompt()">Copia Prompt</button>
 <button class="reset" onclick="resetCampi()">Reset Campi</button>
+
+<div id="copyMessage" class="copy-message">Prompt copiato negli appunti.</div>
+
 </div>
 
 <div class="card">
@@ -265,48 +276,73 @@ Attività fisica: ${valore("sport")}
 Routine skincare: ${valore("skincare")}
 Foto disponibili: ${valore("foto")}
 
-STILE DEL REPORT
+OBIETTIVO
 
-Crea un report dall'aspetto premium, elegante e professionale.
-Utilizza uno stile editoriale minimalista bianco e nero, con linee sottili, schede dai bordi arrotondati, ampi spazi bianchi, tipografia moderna e un'estetica raffinata ispirata ai dossier di consulenza di lusso.
+Crea un report estetico del volto dall'aspetto premium, elegante e professionale.
 
-Il report deve sembrare una valutazione estetica professionale, credibile e basata sull'osservazione oggettiva.
+L'obiettivo è evidenziare sia i punti di forza sia le aree migliorabili, offrendo indicazioni concrete e realistiche per massimizzare il potenziale estetico naturale del soggetto.
 
-ELEMENTI GRAFICI
+Il report non deve essere offensivo, giudicante o eccessivamente lusinghiero. Deve sembrare una consulenza professionale, sobria, credibile e costruttiva.
+
+STILE VISIVO DEL REPORT
+
+Utilizza un design editoriale minimalista bianco e nero, con:
+- sfondo chiaro;
+- linee sottili;
+- schede dai bordi arrotondati;
+- ampi spazi bianchi;
+- tipografia moderna;
+- griglie ordinate;
+- estetica raffinata ispirata ai report di consulenza di lusso.
+
+Il layout deve sembrare un dossier professionale di analisi estetica e immagine personale.
+
+ELEMENTI GRAFICI RICHIESTI
 
 Mostra il volto in una vista frontale isolata.
+
 Integra elementi grafici di analisi facciale:
 - linea centrale di simmetria;
 - terzi del volto;
 - proporzioni principali;
+- distanza tra gli occhi;
+- proporzioni del naso;
+- linea mandibolare;
+- mento;
+- zigomi;
 - punti di riferimento anatomici;
 - indicatori sottili e professionali.
 
-ANALISI ESTETICA
+Se la foto non è frontale o non permette un'analisi precisa, dichiaralo chiaramente.
 
-Analizza in modo onesto, realistico e costruttivo il potenziale estetico del soggetto, evitando complimenti eccessivi o valutazioni artificialmente elevate.
+ANALISI ESTETICA DETTAGLIATA
 
-Assegna un punteggio da 1 a 10, anche con decimali, per ogni categoria:
+Analizza in modo onesto, realistico e costruttivo il potenziale estetico del soggetto.
 
-- Simmetria facciale
-- Proporzioni e terzi del volto
-- Distanza, forma e armonia degli occhi
-- Armonia e proporzioni del naso
-- Forma e proporzioni delle labbra
-- Definizione della mandibola e della linea mandibolare
-- Proiezione e proporzioni del mento
-- Struttura degli zigomi
-- Qualità, texture e uniformità della pelle
-- Attaccatura dei capelli e densità percepita
-- Acconciatura e styling attuale
-- Cura personale e grooming
-- Armonia complessiva del volto
-- Potenziale fotogenico
+Assegna un punteggio da 1 a 10, anche con decimali, per ogni categoria.
 
-Per ogni voce fornisci:
+Per ogni categoria fornisci:
 - punteggio;
-- breve spiegazione;
-- posizionamento rispetto alla media: sotto la media, nella media o sopra la media.
+- breve spiegazione tecnica;
+- posizionamento rispetto alla media: sotto la media, nella media o sopra la media;
+- eventuale margine di miglioramento.
+
+Categorie da valutare:
+
+1. Simmetria facciale
+2. Proporzioni e terzi del volto
+3. Distanza, forma e armonia degli occhi
+4. Armonia e proporzioni del naso
+5. Forma e proporzioni delle labbra
+6. Definizione della mandibola e della linea mandibolare
+7. Proiezione e proporzioni del mento
+8. Struttura degli zigomi
+9. Qualità, texture e uniformità della pelle
+10. Attaccatura dei capelli e densità percepita
+11. Acconciatura e styling attuale
+12. Cura personale e grooming
+13. Armonia complessiva del volto
+14. Potenziale fotogenico
 
 PUNTEGGIO COMPLESSIVO
 
@@ -315,31 +351,51 @@ Assegna un punteggio finale chiamato:
 POTENZIALE DI ATTRATTIVITÀ
 
 Scala da 1 a 10.
-Il punteggio deve essere realistico e coerente con le valutazioni precedenti.
+
+Il punteggio deve essere realistico, coerente con le singole valutazioni e non artificialmente alto.
+
+Spiega brevemente perché il punteggio è stato assegnato.
 
 PUNTI DI FORZA
 
-Evidenzia le caratteristiche più favorevoli del volto.
+Individua le caratteristiche estetiche più favorevoli del volto.
 
-AREE MIGLIORABILI
+Esempi:
+- buona armonia generale;
+- occhi espressivi;
+- naso proporzionato;
+- mandibola definita;
+- pelle uniforme;
+- barba curata;
+- buone proporzioni;
+- buon potenziale fotografico.
+
+AREE CON MAGGIOR MARGINE DI MIGLIORAMENTO
 
 Individua gli aspetti che offrirebbero il miglior ritorno estetico se ottimizzati.
+
+Distingui tra:
+- miglioramenti immediati;
+- miglioramenti ottenibili con routine e costanza;
+- miglioramenti ottenibili con supporto professionale non invasivo.
 
 STIMA DELL'ETÀ APPARENTE
 
 Indica:
 - età apparente stimata;
-- eventuale differenza rispetto all'età cronologica, se conosciuta.
+- eventuale differenza rispetto all'età cronologica, se conosciuta;
+- fattori che fanno apparire più giovani o più maturi.
 
 ARMOCROMIA / CROMOESTETICA
 
 Stima la stagione cromatica più probabile sulla base di:
 - carnagione;
+- sottotono della pelle;
 - colore degli occhi;
 - colore dei capelli;
 - contrasto complessivo.
 
-Scegli tra:
+Scegli la categoria più probabile tra:
 - Primavera Chiara
 - Primavera Calda
 - Primavera Brillante
@@ -353,54 +409,193 @@ Scegli tra:
 - Inverno Freddo
 - Inverno Profondo
 
-Indica:
-- stagione cromatica più probabile;
-- sottotono della pelle;
-- livello di contrasto;
-- colori migliori;
-- colori da evitare;
-- colori consigliati per magliette, camicie, giacche, completi, occhiali e accessori;
-- metalli più valorizzanti.
+Fornisci:
+
+1. Stagione cromatica più probabile
+2. Sottotono della pelle:
+   - caldo
+   - neutro caldo
+   - neutro
+   - neutro freddo
+   - freddo
+3. Livello di contrasto:
+   - basso
+   - medio
+   - alto
+4. Colori che valorizzano maggiormente il viso
+5. Colori da evitare
+6. Migliori colori per:
+   - t-shirt;
+   - camicie;
+   - maglioni;
+   - giacche;
+   - completi eleganti;
+   - montature degli occhiali;
+   - accessori.
+7. Metalli più valorizzanti:
+   - oro;
+   - argento;
+   - bronzo;
+   - oro rosa;
+   - canna di fucile.
 
 RACCOMANDAZIONI PRATICHE
 
 Fornisci suggerimenti concreti, realistici e raggiungibili su:
 
-- taglio di capelli e styling;
-- barba e grooming del viso;
-- skincare;
-- sopracciglia;
-- postura ed espressione facciale;
-- composizione corporea e gestione del peso, solo se pertinente;
-- stile personale e abbigliamento;
-- tecniche per ottenere fotografie più valorizzanti;
-- eventuali trattamenti estetici non invasivi o minimamente invasivi, solo se realmente pertinenti.
+TAGLIO DI CAPELLI E STYLING
 
-CONCLUSIONE
+Suggerisci:
+- tagli più adatti alla forma del volto;
+- lunghezze consigliate;
+- styling quotidiano;
+- eventuali errori da evitare;
+- come valorizzare attaccatura, volume e densità.
 
-Concludi con una sintesi elegante e professionale che evidenzi:
-- punti di forza;
-- aree migliorabili;
-- potenziale estetico naturale;
-- priorità pratiche per valorizzare il volto.
+BARBA E GROOMING DEL VISO
 
-Mantieni un tono elegante, diretto, costruttivo, realistico e professionale.`;
+Suggerisci:
+- lunghezza ideale;
+- contorni consigliati;
+- zone da alleggerire o valorizzare;
+- rapporto tra barba, mandibola e mento;
+- frequenza di manutenzione.
+
+SKINCARE
+
+Proponi una routine semplice e realistica:
+- detergente;
+- crema idratante;
+- protezione solare;
+- eventuali attivi specifici solo se pertinenti.
+
+Evita diagnosi dermatologiche.
+
+SOPRACCIGLIA
+
+Valuta:
+- forma;
+- densità;
+- simmetria;
+- definizione.
+
+Suggerisci solo miglioramenti naturali.
+
+POSTURA ED ESPRESSIONE FACCIALE
+
+Fornisci consigli su:
+- postura del collo;
+- posizione del mento;
+- rilassamento del volto;
+- sorriso;
+- espressione fotografica;
+- tensioni facciali da evitare.
+
+COMPOSIZIONE CORPOREA E GESTIONE DEL PESO
+
+Solo se pertinente rispetto ai dati forniti o alla foto, valuta:
+- impatto del peso sulla definizione del volto;
+- zona collo/mandibola;
+- eventuale margine di miglioramento nella definizione facciale.
+
+Evita obiettivi irrealistici, estremi o non salutari.
+
+STILE PERSONALE E ABBIGLIAMENTO
+
+Suggerisci:
+- vestibilità;
+- scolli e colletti più valorizzanti;
+- colori coerenti con l'armocromia;
+- montature degli occhiali;
+- accessori;
+- direzione stilistica generale.
+
+FOTOGRAFIA
+
+Fornisci indicazioni pratiche per ottenere fotografie più valorizzanti:
+- angolazione;
+- altezza camera;
+- luce;
+- distanza;
+- lunghezza focale consigliata;
+- posizione del viso;
+- espressione;
+- sfondo;
+- errori da evitare.
+
+TRATTAMENTI ESTETICI NON INVASIVI O MINIMAMENTE INVASIVI
+
+Solo se realmente pertinenti, valuta:
+- skincare professionale;
+- pulizia viso;
+- peeling chimici;
+- microneedling;
+- laser;
+- botox;
+- filler.
+
+Non proporre chirurgia salvo casi particolari ed evidenti.
+Non fare diagnosi mediche.
+Presenta sempre questi interventi come opzioni facoltative da valutare con professionisti qualificati.
+
+STRUTTURA DEL REPORT FINALE
+
+Organizza il report con queste sezioni:
+
+1. Executive Summary
+2. Tabella punteggi estetici
+3. Analisi dettagliata del volto
+4. Punti di forza
+5. Aree migliorabili
+6. Potenziale di attrattività
+7. Età apparente
+8. Armocromia / Cromoestetica
+9. Raccomandazioni pratiche
+10. Priorità d'intervento
+11. Conclusione professionale
+
+TONO
+
+Mantieni un tono:
+- elegante;
+- professionale;
+- diretto;
+- costruttivo;
+- realistico;
+- credibile;
+- non offensivo.
+
+Evita:
+- complimenti eccessivi;
+- punteggi irrealisticamente alti;
+- giudizi volgari;
+- diagnosi mediche;
+- promesse di trasformazioni estreme.
+
+Il risultato finale deve sembrare un autentico report estetico premium realizzato da un consulente esperto di immagine, armonia facciale e cromoestetica.`;
 
 document.getElementById("prompt").value = testo;
 }
 
 function copiaPrompt(){
     let prompt = document.getElementById("prompt");
+    let msg = document.getElementById("copyMessage");
 
     if(prompt.value.trim() === ""){
-        alert("Prima genera il prompt.");
+        msg.style.display = "block";
+        msg.textContent = "Prima genera il prompt.";
+        setTimeout(() => { msg.style.display = "none"; }, 2000);
         return;
     }
 
     prompt.select();
     prompt.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(prompt.value);
-    alert("Prompt copiato negli appunti.");
+
+    navigator.clipboard.writeText(prompt.value).then(() => {
+        msg.style.display = "block";
+        msg.textContent = "Prompt copiato negli appunti.";
+        setTimeout(() => { msg.style.display = "none"; }, 2000);
+    });
 }
 
 function resetCampi(){
@@ -411,9 +606,10 @@ function resetCampi(){
             el.value = "";
         }
     });
+
+    document.getElementById("copyMessage").style.display = "none";
 }
 </script>
 
 </body>
 </html>
-```
