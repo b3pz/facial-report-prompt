@@ -154,6 +154,15 @@ h1 span{color:var(--gold2);}
     width:min(360px,100%);
     position:relative;
     z-index:8;
+    transition:opacity .3s ease, transform .3s ease, margin .3s ease, height .3s ease;
+}
+.preview-tabs.is-hidden{
+    opacity:0;
+    transform:translateY(-10px);
+    pointer-events:none;
+    height:0;
+    margin:0 auto;
+    overflow:hidden;
 }
 .gender-tab{
     border:1px solid rgba(255,255,255,.14);
@@ -222,7 +231,9 @@ h1 span{color:var(--gold2);}
     height:100%;
     object-fit:cover;
     filter:grayscale(100%) contrast(1.15) brightness(.95);
+    object-position:center center;
 }
+
 .user-photo.show{display:block;}
 .user-photo-overlay{
     position:absolute;
@@ -245,10 +256,45 @@ h1 span{color:var(--gold2);}
 .nose{position:absolute;left:50%;top:128px;transform:translateX(-50%);width:17px;height:32px;border-radius:50%;border-right:2px solid rgba(60,34,21,.38);z-index:4;}
 .mouth{position:absolute;left:50%;top:168px;transform:translateX(-50%);width:44px;height:9px;border-radius:50%;border-bottom:3px solid rgba(60,30,25,.55);z-index:4;}
 .scan-line-v{position:absolute;top:46px;bottom:28px;left:50%;width:1px;background:linear-gradient(180deg,transparent,var(--gold2),transparent);z-index:8;opacity:.7;}
-.scan-line-h{position:absolute;left:28px;right:28px;height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent);z-index:8;opacity:.5;}
+.scan-line-h{display:none;}
 .scan-line-h.l1{top:92px;}.scan-line-h.l2{top:150px;}.scan-line-h.l3{top:210px;}
 .face-dot{position:absolute;width:5px;height:5px;background:var(--gold2);border-radius:50%;box-shadow:0 0 0 5px rgba(242,210,155,.14);z-index:9;}
-.dot1{left:38%;top:33%;}.dot2{left:62%;top:33%;}.dot3{left:50%;top:49%;}.dot4{left:50%;top:69%;}
+.dot1{left:34%;top:34%;}.dot2{right:34%;top:34%;}.dot3{left:50%;top:52%;}.dot4{left:50%;top:72%;}
+
+.visual-badge{
+    position:absolute;
+    left:22px;
+    bottom:22px;
+    z-index:10;
+    padding:9px 12px;
+    border-radius:999px;
+    border:1px solid rgba(242,210,155,.34);
+    background:rgba(0,0,0,.42);
+    color:var(--gold2);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    backdrop-filter:blur(12px);
+}
+.scan-sweep{
+    position:absolute;
+    left:0;
+    right:0;
+    top:-20%;
+    height:90px;
+    z-index:7;
+    pointer-events:none;
+    background:linear-gradient(180deg,transparent,rgba(242,210,155,.12),transparent);
+    animation:scanSweep 5.8s ease-in-out infinite;
+}
+@keyframes scanSweep{
+    0%{transform:translateY(-80px);opacity:0;}
+    20%{opacity:.55;}
+    70%{opacity:.35;}
+    100%{transform:translateY(470px);opacity:0;}
+}
+
 .analysis-box{
     position:relative;
     z-index:9;
@@ -434,10 +480,10 @@ h2{
             <p class="hero-copy"><strong>Ogni volto racconta una storia. Scopri il potenziale del tuo.</strong><br>Analisi del volto, armocromia, fotogenia e consigli personalizzati in un unico report professionale.</p>
 
             <div class="pills">
-                <div class="pill">✓ Analisi professionale</div>
-                <div class="pill">✓ Armocromia inclusa</div>
-                <div class="pill">✓ Consigli personalizzati</div>
-                <div class="pill">✓ Report Premium</div>
+                <div class="pill">✓ Simmetria</div>
+                <div class="pill">✓ Fotogenia</div>
+                <div class="pill">✓ Armocromia</div>
+                <div class="pill">✓ Grooming</div>
             </div>
 
             <div class="hero-actions">
@@ -448,13 +494,15 @@ h2{
 
         <div class="preview-panel">
             <div class="preview-tabs" id="genderTabs">
-                <div id="maleTab" class="gender-tab active" onclick="showGender('male')">♂ Uomo</div>
-                <div id="femaleTab" class="gender-tab" onclick="showGender('female')">♀ Donna</div>
+                <div id="maleTab" class="gender-tab active" onclick="showGender('male')">Maschile</div>
+                <div id="femaleTab" class="gender-tab" onclick="showGender('female')">Femminile</div>
             </div>
 
             <div class="face-stage">
                 <img id="heroUserPhoto" class="user-photo" alt="Foto caricata dall'utente">
                 <div id="heroOverlay" class="user-photo-overlay" style="display:none;"></div>
+                <div class="scan-sweep"></div>
+                <div class="visual-badge">Analisi visiva</div>
 
                 <div id="maleFace" class="face-card male active">
                     <img class="demo-face" src="assets/hero-man.webp" alt="Anteprima uomo">
@@ -470,9 +518,9 @@ h2{
             </div>
 
             <div class="analysis-box">
-                <small>Anteprima illustrativa</small>
+                <small>Analisi visiva</small>
                 <div class="analysis-grid">
-                    <div class="analysis-item"><span class="analysis-icon">◈</span> Simmetria facciale</div>
+                    <div class="analysis-item"><span class="analysis-icon">◈</span> Simmetria</div>
                     <div class="analysis-item"><span class="analysis-icon">✂</span> Grooming</div>
                     <div class="analysis-item"><span class="analysis-icon">⌗</span> Proporzioni</div>
                     <div class="analysis-item"><span class="analysis-icon">✦</span> Potenziale estetico</div>
@@ -489,11 +537,11 @@ h2{
 
 <div class="wrap">
     <div class="feature-strip">
-        <div class="feature"><div class="feature-icon">☆</div><div><strong>14+ categorie</strong><span>estetiche analizzate</span></div></div>
-        <div class="feature"><div class="feature-icon">◉</div><div><strong>Armocromia</strong><span>completa e personalizzata</span></div></div>
-        <div class="feature"><div class="feature-icon">✂</div><div><strong>Consigli</strong><span>capelli, barba e grooming</span></div></div>
-        <div class="feature"><div class="feature-icon">▣</div><div><strong>Fotografia</strong><span>angoli e pose migliori</span></div></div>
-        <div class="feature"><div class="feature-icon">▤</div><div><strong>Report</strong><span>dettagliato in italiano</span></div></div>
+        <div class="feature"><div class="feature-icon">☆</div><div><strong>14 analisi</strong><span>professionali sul volto</span></div></div>
+        <div class="feature"><div class="feature-icon">◉</div><div><strong>Armocromia</strong><span>palette e colori ideali</span></div></div>
+        <div class="feature"><div class="feature-icon">✂</div><div><strong>Valorizzazione</strong><span>capelli, barba e grooming</span></div></div>
+        <div class="feature"><div class="feature-icon">▣</div><div><strong>Fotogenia</strong><span>angoli e presenza migliori</span></div></div>
+        <div class="feature"><div class="feature-icon">▤</div><div><strong>Report completo</strong><span>chiaro, elegante, in italiano</span></div></div>
     </div>
 </div>
 
@@ -576,7 +624,7 @@ h2{
 <footer class="footer">
     <div class="wrap footer-inner">
         <strong>Premium Facial Aesthetic Report</strong>
-        <span>La bellezza non è perfezione. È valorizzare ciò che ti rende unico.<br>Le valutazioni sono puramente estetiche e orientative. Non sostituiscono una consulenza medica, dermatologica o psicologica.</span>
+        <span>Ogni volto ha caratteristiche uniche. Questo report aiuta a comprenderle e valorizzarle.<br>Le valutazioni sono puramente estetiche e orientative. Non sostituiscono una consulenza medica, dermatologica o psicologica.</span>
     </div>
 </footer>
 
@@ -624,9 +672,9 @@ function handlePhotoFile(file){
     hero.classList.add("show");
     document.getElementById("heroOverlay").style.display = "block";
     placeholder.style.display = "none";
-    status.textContent = "Foto caricata";
+    status.textContent = "✓ Foto pronta per l’analisi";
     status.classList.add("ok");
-    document.getElementById("genderTabs").style.display = "none";
+    document.getElementById("genderTabs").classList.add("is-hidden");
 }
 
 const fileInput = document.getElementById("facePhoto");
@@ -964,7 +1012,7 @@ function resetCampi(){
     document.getElementById("uploadPlaceholder").style.display = "block";
     document.getElementById("uploadStatus").textContent = "Foto non caricata";
     document.getElementById("uploadStatus").classList.remove("ok");
-    document.getElementById("genderTabs").style.display = "grid";
+    document.getElementById("genderTabs").classList.remove("is-hidden");
     showGender("male");
     document.getElementById("copyMessage").style.display = "none";
 }
