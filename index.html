@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -283,6 +284,35 @@ select option{color:#111;} input:focus,select:focus{border-color:rgba(242,210,15
 .upload-status{margin-top:14px;border-radius:999px;padding:10px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.70);font-size:12px;font-weight:900;display:inline-flex;}
 .upload-status.ok{background:rgba(16,163,127,.12);border-color:rgba(16,163,127,.34);color:#9cf1dd;}
 .local-note{margin-top:20px;border:1px solid rgba(242,210,155,.24);background:rgba(242,210,155,.08);border-radius:16px;padding:15px;color:#e8cfaa;font-size:13px;line-height:1.55;}
+.webcam-panel{
+    display:none;
+    margin-top:16px;
+    border:1px solid rgba(242,210,155,.22);
+    background:rgba(0,0,0,.18);
+    border-radius:18px;
+    padding:14px;
+}
+.webcam-video{
+    width:100%;
+    max-height:280px;
+    object-fit:cover;
+    border-radius:14px;
+    background:#000;
+    display:block;
+}
+.webcam-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:12px;
+}
+.webcam-hint{
+    margin-top:10px;
+    color:rgba(255,255,255,.54);
+    font-size:12px;
+    line-height:1.45;
+}
+
 
 .footer{border-top:1px solid rgba(242,210,155,.12);padding:26px 0 38px;color:rgba(255,255,255,.55);font-size:13px;}.footer-inner{display:flex;justify-content:space-between;gap:18px;}.hidden-prompt{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;}
 
@@ -398,6 +428,19 @@ select option{color:#111;} input:focus,select:focus{border-color:rgba(242,210,15
                     <span id="uploadPlaceholder" class="upload-placeholder"><strong>Trascina qui la foto</strong>oppure clicca per scegliere o scattare una foto</span>
                 </label>
                 <span id="uploadStatus" class="upload-status">Foto non caricata</span>
+
+                <div class="actions" style="grid-template-columns:1fr; margin-top:16px;">
+                    <button class="btn btn-soft" type="button" onclick="openWebcam()">📸 Usa fotocamera</button>
+                </div>
+
+                <div id="webcamPanel" class="webcam-panel">
+                    <video id="webcamVideo" class="webcam-video" autoplay playsinline></video>
+                    <div class="webcam-actions">
+                        <button class="btn btn-gold" type="button" onclick="takeWebcamPhoto()">Scatta foto</button>
+                        <button class="btn btn-outline" type="button" onclick="closeWebcam()">Chiudi</button>
+                    </div>
+                    <div class="webcam-hint">Su Chrome Mac il browser ti chiederà il permesso di usare la fotocamera.</div>
+                </div>
             </div>
 
             <div class="local-note">La foto viene mostrata solo come anteprima locale nel browser e non viene inviata a nessun server. Per generare il report dovrai caricare manualmente la stessa foto su ChatGPT insieme al prompt copiato.</div>
@@ -625,6 +668,32 @@ Fornisci suggerimenti concreti su:
 - fotografie più valorizzanti;
 - eventuali trattamenti estetici non invasivi, solo se pertinenti.
 
+OUTPUT RICHIESTO
+
+Genera DUE risultati distinti.
+
+RISULTATO 1 — REPORT TESTUALE
+
+Crea il report completo in italiano seguendo tutte le istruzioni precedenti.
+
+RISULTATO 2 — IMMAGINE REPORT PREMIUM
+
+Genera anche un'immagine premium basata sulla foto caricata.
+
+L'immagine deve mostrare:
+- volto isolato;
+- linee di simmetria;
+- terzi del volto;
+- proporzioni facciali;
+- punti anatomici;
+- indicatori estetici professionali;
+- stile editoriale minimalista bianco e nero;
+- design elegante da dossier estetico di lusso;
+- pannelli con punteggi sintetici;
+- aspetto realistico, credibile e professionale.
+
+L'immagine deve essere generata direttamente e non soltanto descritta a parole. Se prima produci il report testuale, subito dopo genera anche l'immagine richiesta.
+
 STRUTTURA DEL REPORT FINALE
 
 Organizza il report con queste sezioni:
@@ -650,7 +719,7 @@ async function copyPrompt(){
     const prompt = generaPrompt();
     try{
         await navigator.clipboard.writeText(prompt);
-        showMessage("Prompt copiato negli appunti. Ora carica la foto su ChatGPT e incollalo.");
+        showMessage("Prompt copiato. Su ChatGPT carica la stessa foto, poi incolla con CMD+V / CTRL+V. Il prompt chiederà report testuale + immagine premium.");
         return true;
     }catch(e){
         const hidden = document.getElementById("hiddenPrompt");
@@ -667,7 +736,76 @@ async function copyAndOpenChatGPT(){
     window.open("https://chatgpt.com/", "_blank");
 }
 
+
+let webcamStream = null;
+
+async function openWebcam(){
+    const panel = document.getElementById("webcamPanel");
+    const video = document.getElementById("webcamVideo");
+
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+        showMessage("La fotocamera non è supportata da questo browser. Usa il caricamento foto.");
+        return;
+    }
+
+    try{
+        webcamStream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "user" },
+            audio: false
+        });
+        video.srcObject = webcamStream;
+        panel.style.display = "block";
+    }catch(e){
+        showMessage("Permesso fotocamera negato o non disponibile. Puoi caricare una foto manualmente.");
+    }
+}
+
+function takeWebcamPhoto(){
+    const video = document.getElementById("webcamVideo");
+
+    if(!video || !video.videoWidth){
+        showMessage("La fotocamera non è ancora pronta. Riprova tra un secondo.");
+        return;
+    }
+
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    canvas.toBlob(blob => {
+        if(!blob){
+            showMessage("Non sono riuscito a scattare la foto.");
+            return;
+        }
+        const file = new File([blob], "webcam-photo.jpg", { type: "image/jpeg" });
+        handlePhotoFile(file);
+        closeWebcam();
+        showMessage("Foto scattata e inserita nell'anteprima.");
+    }, "image/jpeg", 0.92);
+}
+
+function closeWebcam(){
+    const panel = document.getElementById("webcamPanel");
+    const video = document.getElementById("webcamVideo");
+
+    if(webcamStream){
+        webcamStream.getTracks().forEach(track => track.stop());
+        webcamStream = null;
+    }
+
+    if(video){
+        video.srcObject = null;
+    }
+
+    if(panel){
+        panel.style.display = "none";
+    }
+}
+
 function resetCampi(){
+    closeWebcam();
     document.querySelectorAll("input, select").forEach(el => {
         if(el.type === "file") el.value = "";
         else if(el.tagName === "SELECT") el.selectedIndex = 0;
