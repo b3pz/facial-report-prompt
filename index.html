@@ -3,13 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Premium Facial Aesthetic Report</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 body{
     font-family:'Inter',sans-serif;
@@ -19,19 +16,16 @@ body{
     margin:auto;
     padding:40px 20px;
 }
-
 h1{
     text-align:center;
     font-size:46px;
     margin-bottom:10px;
 }
-
 .subtitle{
     text-align:center;
     color:#666;
     margin-bottom:40px;
 }
-
 .card{
     background:white;
     border-radius:22px;
@@ -39,24 +33,20 @@ h1{
     margin-bottom:30px;
     box-shadow:0 8px 30px rgba(0,0,0,0.06);
 }
-
 .grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:20px;
 }
-
 .field{
     margin-bottom:18px;
 }
-
 label{
     font-size:14px;
     color:#555;
     margin-bottom:6px;
     display:block;
 }
-
 input,select,textarea{
     width:100%;
     padding:15px;
@@ -66,13 +56,11 @@ input,select,textarea{
     box-sizing:border-box;
     font-family:'Inter',sans-serif;
 }
-
 textarea{
     height:700px;
     line-height:1.6;
     resize:vertical;
 }
-
 button, .chatgpt-button{
     background:#000;
     color:white;
@@ -86,15 +74,12 @@ button, .chatgpt-button{
     text-decoration:none;
     display:inline-block;
 }
-
 button.secondary{
     background:#333;
 }
-
 button.reset{
     background:#777;
 }
-
 .copy-message{
     display:none;
     margin-top:15px;
@@ -102,33 +87,28 @@ button.reset{
     color:#111;
     font-weight:600;
 }
-
 .steps{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:18px;
     margin-top:20px;
 }
-
 .step{
     background:#f5f5f7;
     border-radius:16px;
     padding:18px;
     border:1px solid #e5e5e5;
 }
-
 .step strong{
     display:block;
     margin-bottom:8px;
 }
-
 .footer{
     text-align:center;
     color:#777;
     font-size:13px;
     margin-top:30px;
 }
-
 @media(max-width:700px){
     h1{font-size:34px;}
     .grid{grid-template-columns:1fr;}
@@ -138,50 +118,38 @@ button.reset{
 }
 </style>
 </head>
-
 <body>
-
 <h1>Premium Facial Aesthetic Report</h1>
-
 <div class="subtitle">
 Generatore di prompt per report estetico premium del volto, armocromia e consulenza d’immagine.
 </div>
-
 <div class="card">
 <h2>Come utilizzare il report</h2>
-
 <div class="steps">
 <div class="step">
 <strong>1. Inserisci i dati</strong>
 Compila le informazioni facoltative del soggetto. Se non conosci un dato, lascialo vuoto.
 </div>
-
 <div class="step">
 <strong>2. Genera il prompt</strong>
 Clicca su “Genera Prompt” per creare il testo personalizzato.
 </div>
-
 <div class="step">
 <strong>3. Copia il prompt</strong>
 Clicca su “Copia Prompt” per copiarlo negli appunti.
 </div>
-
 <div class="step">
 <strong>4. Apri ChatGPT</strong>
 Carica le foto del volto, incolla il prompt e genera il report.
 </div>
 </div>
-
 <a class="chatgpt-button" href="https://chatgpt.com/" target="_blank">
 Apri ChatGPT
 </a>
 </div>
-
 <div class="card">
 <h2>Informazioni del soggetto</h2>
-
 <div class="grid">
-
 <div class="field">
 <label>Sesso</label>
 <select id="sesso">
@@ -191,32 +159,26 @@ Apri ChatGPT
 <option>Altro / Preferisco non indicarlo</option>
 </select>
 </div>
-
 <div class="field">
 <label>Età</label>
 <input id="eta" placeholder="Es. 35">
 </div>
-
 <div class="field">
 <label>Altezza</label>
 <input id="altezza" placeholder="Es. 168 cm">
 </div>
-
 <div class="field">
 <label>Peso</label>
 <input id="peso" placeholder="Es. 68 kg">
 </div>
-
 <div class="field">
 <label>Colore occhi</label>
 <input id="occhi" placeholder="Es. marroni">
 </div>
-
 <div class="field">
 <label>Colore capelli</label>
 <input id="capelli" placeholder="Es. castani">
 </div>
-
 <div class="field">
 <label>Occhiali</label>
 <select id="occhiali">
@@ -226,7 +188,6 @@ Apri ChatGPT
 <option>A volte</option>
 </select>
 </div>
-
 <div class="field">
 <label>Fumatore</label>
 <select id="fumo">
@@ -236,7 +197,6 @@ Apri ChatGPT
 <option>Occasionale</option>
 </select>
 </div>
-
 <div class="field">
 <label>Consumo di alcol</label>
 <select id="alcol">
@@ -247,7 +207,6 @@ Apri ChatGPT
 <option>Elevato</option>
 </select>
 </div>
-
 <div class="field">
 <label>Attività fisica</label>
 <select id="sport">
@@ -258,7 +217,6 @@ Apri ChatGPT
 <option>5 o più volte a settimana</option>
 </select>
 </div>
-
 <div class="field">
 <label>Routine skincare</label>
 <select id="skincare">
@@ -269,7 +227,6 @@ Apri ChatGPT
 <option>Avanzata: routine completa con attivi</option>
 </select>
 </div>
-
 <div class="field">
 <label>Foto disponibili</label>
 <select id="foto">
@@ -280,41 +237,28 @@ Apri ChatGPT
 <option>Più foto con luci diverse</option>
 </select>
 </div>
-
 </div>
-
 <button onclick="generaPrompt()">Genera Prompt</button>
 <button class="secondary" onclick="copiaPrompt()">Copia Prompt</button>
 <button class="reset" onclick="resetCampi()">Reset Campi</button>
-
 <div id="copyMessage" class="copy-message">Prompt copiato negli appunti.</div>
-
 </div>
-
 <div class="card">
 <h2>Prompt generato</h2>
 <textarea id="prompt" placeholder="Il prompt verrà generato qui..."></textarea>
 </div>
-
 <div class="footer">
 Le valutazioni sono puramente estetiche e orientative. Non sostituiscono una consulenza medica, dermatologica o psicologica.
 </div>
-
 <script>
 function valore(id){
     return document.getElementById(id).value || "Non specificato";
 }
-
 function generaPrompt(){
-
 let testo = `Crea un report estetico premium del volto basato sulle fotografie caricate.
-
 Il risultato deve essere interamente in italiano.
-
 Basati principalmente sulle immagini. Usa le informazioni aggiuntive solo quando sono realmente pertinenti. Se un aspetto non è valutabile con affidabilità dalla foto, dichiaralo chiaramente e formula solo stime prudenti.
-
 INFORMAZIONI DEL SOGGETTO
-
 Sesso: ${valore("sesso")}
 Età: ${valore("eta")}
 Altezza: ${valore("altezza")}
@@ -327,17 +271,11 @@ Consumo di alcol: ${valore("alcol")}
 Attività fisica: ${valore("sport")}
 Routine skincare: ${valore("skincare")}
 Foto disponibili: ${valore("foto")}
-
 OBIETTIVO
-
 Crea un report estetico del volto dall'aspetto premium, elegante e professionale.
-
 L'obiettivo è evidenziare sia i punti di forza sia le aree migliorabili, offrendo indicazioni concrete e realistiche per massimizzare il potenziale estetico naturale del soggetto.
-
 Il report non deve essere offensivo, giudicante o eccessivamente lusinghiero. Deve sembrare una consulenza professionale, sobria, credibile e costruttiva.
-
 STILE VISIVO DEL REPORT
-
 Utilizza un design editoriale minimalista bianco e nero, con:
 - sfondo chiaro;
 - linee sottili;
@@ -346,13 +284,9 @@ Utilizza un design editoriale minimalista bianco e nero, con:
 - tipografia moderna;
 - griglie ordinate;
 - estetica raffinata ispirata ai report di consulenza di lusso.
-
 Il layout deve sembrare un dossier professionale di analisi estetica e immagine personale.
-
 ELEMENTI GRAFICI RICHIESTI
-
 Mostra il volto in una vista frontale isolata.
-
 Integra elementi grafici di analisi facciale:
 - linea centrale di simmetria;
 - terzi del volto;
@@ -364,23 +298,16 @@ Integra elementi grafici di analisi facciale:
 - zigomi;
 - punti di riferimento anatomici;
 - indicatori sottili e professionali.
-
 Se la foto non è frontale o non permette un'analisi precisa, dichiaralo chiaramente.
-
 ANALISI ESTETICA DETTAGLIATA
-
 Analizza in modo onesto, realistico e costruttivo il potenziale estetico del soggetto.
-
 Assegna un punteggio da 1 a 10, anche con decimali, per ogni categoria.
-
 Per ogni categoria fornisci:
 - punteggio;
 - breve spiegazione tecnica;
 - posizionamento rispetto alla media: sotto la media, nella media o sopra la media;
 - eventuale margine di miglioramento.
-
 Categorie da valutare:
-
 1. Simmetria facciale
 2. Proporzioni e terzi del volto
 3. Distanza, forma e armonia degli occhi
@@ -395,48 +322,32 @@ Categorie da valutare:
 12. Cura personale e grooming
 13. Armonia complessiva del volto
 14. Potenziale fotogenico
-
 PUNTEGGIO COMPLESSIVO
-
 Assegna un punteggio finale chiamato:
-
 POTENZIALE DI ATTRATTIVITÀ
-
 Scala da 1 a 10.
-
 Il punteggio deve essere realistico, coerente con le singole valutazioni e non artificialmente alto.
-
 Spiega brevemente perché il punteggio è stato assegnato.
-
 PUNTI DI FORZA
-
 Individua le caratteristiche estetiche più favorevoli del volto.
-
 AREE CON MAGGIOR MARGINE DI MIGLIORAMENTO
-
 Individua gli aspetti che offrirebbero il miglior ritorno estetico se ottimizzati.
-
 Distingui tra:
 - miglioramenti immediati;
 - miglioramenti ottenibili con routine e costanza;
 - miglioramenti ottenibili con supporto professionale non invasivo.
-
 STIMA DELL'ETÀ APPARENTE
-
 Indica:
 - età apparente stimata;
 - eventuale differenza rispetto all'età cronologica, se conosciuta;
 - fattori che fanno apparire più giovani o più maturi.
-
 ARMOCROMIA / CROMOESTETICA
-
 Stima la stagione cromatica più probabile sulla base di:
 - carnagione;
 - sottotono della pelle;
 - colore degli occhi;
 - colore dei capelli;
 - contrasto complessivo.
-
 Scegli la categoria più probabile tra:
 - Primavera Chiara
 - Primavera Calda
@@ -450,7 +361,6 @@ Scegli la categoria più probabile tra:
 - Inverno Brillante
 - Inverno Freddo
 - Inverno Profondo
-
 Fornisci:
 1. Stagione cromatica più probabile
 2. Sottotono della pelle
@@ -459,9 +369,7 @@ Fornisci:
 5. Colori da evitare
 6. Migliori colori per t-shirt, camicie, maglioni, giacche, completi eleganti, montature degli occhiali e accessori
 7. Metalli più valorizzanti
-
 RACCOMANDAZIONI PRATICHE
-
 Fornisci suggerimenti concreti, realistici e raggiungibili su:
 - taglio di capelli e styling;
 - barba e grooming del viso;
@@ -472,11 +380,8 @@ Fornisci suggerimenti concreti, realistici e raggiungibili su:
 - stile personale e abbigliamento;
 - tecniche per ottenere fotografie più valorizzanti;
 - eventuali trattamenti estetici non invasivi o minimamente invasivi, solo se realmente pertinenti.
-
 STRUTTURA DEL REPORT FINALE
-
 Organizza il report con queste sezioni:
-
 1. Executive Summary
 2. Tabella punteggi estetici
 3. Analisi dettagliata del volto
@@ -488,37 +393,28 @@ Organizza il report con queste sezioni:
 9. Raccomandazioni pratiche
 10. Priorità d'intervento
 11. Conclusione professionale
-
 TONO
-
 Mantieni un tono elegante, professionale, diretto, costruttivo, realistico e credibile.
-
 Evita complimenti eccessivi, punteggi irrealisticamente alti, giudizi volgari, diagnosi mediche e promesse di trasformazioni estreme.`;
-
 document.getElementById("prompt").value = testo;
 }
-
 function copiaPrompt(){
     let prompt = document.getElementById("prompt");
     let msg = document.getElementById("copyMessage");
-
     if(prompt.value.trim() === ""){
         msg.style.display = "block";
         msg.textContent = "Prima genera il prompt.";
         setTimeout(() => { msg.style.display = "none"; }, 2000);
         return;
     }
-
     prompt.select();
     prompt.setSelectionRange(0, 99999);
-
     navigator.clipboard.writeText(prompt.value).then(() => {
         msg.style.display = "block";
         msg.textContent = "Prompt copiato negli appunti.";
         setTimeout(() => { msg.style.display = "none"; }, 2000);
     });
 }
-
 function resetCampi(){
     document.querySelectorAll("input, select, textarea").forEach(el => {
         if(el.tagName === "SELECT"){
@@ -527,10 +423,8 @@ function resetCampi(){
             el.value = "";
         }
     });
-
     document.getElementById("copyMessage").style.display = "none";
 }
 </script>
-
 </body>
 </html>
