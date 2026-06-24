@@ -184,7 +184,7 @@ h1 span{color:var(--gold2);}
 .face-stage{
     display:grid;
     grid-template-columns:1fr;
-    height:345px;
+    height:305px;
     border-radius:24px;
     overflow:hidden;
     position:relative;
@@ -278,7 +278,7 @@ h1 span{color:var(--gold2);}
     backdrop-filter:blur(12px);
 }
 
-.hero-metrics{
+ .hero-indicators{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:12px;
@@ -287,29 +287,41 @@ h1 span{color:var(--gold2);}
     position:relative;
     z-index:8;
 }
-.hero-metrics div{
-    border:1px solid rgba(242,210,155,.16);
+.hero-indicator{
+    border:1px solid rgba(242,210,155,.18);
     border-radius:16px;
-    background:rgba(255,255,255,.045);
-    padding:10px 12px;
+    background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(0,0,0,.18));
+    padding:12px 12px;
     text-align:center;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
-.hero-metrics span{
-    display:block;
-    color:rgba(255,255,255,.58);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:.04em;
-    text-transform:uppercase;
-    margin-bottom:3px;
-}
-.hero-metrics strong{
+.hero-indicator span{
     display:block;
     color:var(--gold2);
-    font-size:18px;
-    line-height:1;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.08em;
+    text-transform:uppercase;
 }
+.hero-micro-label{
+    position:absolute;
+    z-index:10;
+    color:rgba(242,210,155,.82);
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    padding:7px 9px;
+    border:1px solid rgba(242,210,155,.22);
+    border-radius:999px;
+    background:rgba(0,0,0,.28);
+    backdrop-filter:blur(10px);
+    pointer-events:none;
+}
+.micro-1{left:22px;top:24px;}
+.micro-2{right:22px;top:28px;}
+.micro-3{right:24px;bottom:24px;}
+
 .hero-rings{
     position:absolute;
     inset:0;
@@ -335,7 +347,7 @@ h1 span{color:var(--gold2);}
     inset:0;
     z-index:6;
     pointer-events:none;
-    background:radial-gradient(circle at 50% 48%,rgba(242,210,155,.10),transparent 62%);
+    background:radial-gradient(circle at 50% 48%,rgba(242,210,155,.16),transparent 64%);
     animation:pulseGlow 5s ease-in-out infinite;
 }
 @keyframes pulseGlow{
@@ -372,7 +384,7 @@ h1 span{color:var(--gold2);}
 .analysis-box{
     position:relative;
     z-index:9;
-    margin:-32px auto 0;
+    margin:-52px auto 0;
     width:86%;
     border-radius:22px;
     border:1px solid rgba(255,255,255,.12);
@@ -465,7 +477,7 @@ select option{color:#111;} input:focus,select:focus{border-color:rgba(242,210,15
 }
 @media(max-width:700px){
     .upload-actions{grid-template-columns:1fr;}
-    .hero-metrics{grid-template-columns:1fr; width:100%;}
+    .hero-indicators{grid-template-columns:1fr; width:100%;}
     .wrap{width:min(100% - 24px,1160px);}.hero{padding-top:28px;min-height:auto;}h1{font-size:clamp(44px,16vw,70px);}.hero-copy{font-size:16px;}.hero-actions,.actions{display:grid;grid-template-columns:1fr;}.preview-panel{min-height:auto;padding:14px;}.face-stage{height:430px;}.analysis-box{width:100%;margin:16px 0 0;}.analysis-grid{grid-template-columns:1fr;}.card{padding:20px;}.grid{grid-template-columns:1fr;}.footer-inner{display:block;}
 }
 
@@ -574,10 +586,10 @@ h2{
                 <div id="femaleTab" class="gender-tab" onclick="showGender('female')">Femminile</div>
             </div>
 
-            <div class="hero-metrics" aria-label="Valori dimostrativi dell'anteprima">
-                <div><span>Simmetria</span><strong>8.2</strong></div>
-                <div><span>Fotogenia</span><strong>7.8</strong></div>
-                <div><span>Armonia</span><strong>8.0</strong></div>
+            <div class="hero-indicators" aria-label="Indicatori dimostrativi dell'anteprima">
+                <div class="hero-indicator"><span id="metricOne">Struttura</span></div>
+                <div class="hero-indicator"><span id="metricTwo">Proporzioni</span></div>
+                <div class="hero-indicator"><span id="metricThree">Presenza</span></div>
             </div>
 
             <div class="face-stage">
@@ -586,6 +598,9 @@ h2{
                 <div class="hero-rings"></div>
                 <div class="scan-sweep"></div>
                 <div class="visual-badge">Analisi visiva</div>
+                <div id="microOne" class="hero-micro-label micro-1">Simmetria</div>
+                <div id="microTwo" class="hero-micro-label micro-2">Fotogenia</div>
+                <div id="microThree" class="hero-micro-label micro-3">Armocromia</div>
 
                 <div id="maleFace" class="face-card male active">
                     <img class="demo-face" src="assets/hero-man.webp" alt="Anteprima uomo">
@@ -732,6 +747,29 @@ function showGender(gender){
     femaleTab.classList.toggle("active", gender === "female");
     maleFace.classList.toggle("active", gender === "male");
     femaleFace.classList.toggle("active", gender === "female");
+
+    const metricOne = document.getElementById("metricOne");
+    const metricTwo = document.getElementById("metricTwo");
+    const metricThree = document.getElementById("metricThree");
+    const microOne = document.getElementById("microOne");
+    const microTwo = document.getElementById("microTwo");
+    const microThree = document.getElementById("microThree");
+
+    if(gender === "female"){
+        metricOne.textContent = "Armonia";
+        metricTwo.textContent = "Luminosità";
+        metricThree.textContent = "Fotogenia";
+        microOne.textContent = "Armonia";
+        microTwo.textContent = "Luce";
+        microThree.textContent = "Fotogenia";
+    }else{
+        metricOne.textContent = "Struttura";
+        metricTwo.textContent = "Proporzioni";
+        metricThree.textContent = "Presenza";
+        microOne.textContent = "Simmetria";
+        microTwo.textContent = "Fotogenia";
+        microThree.textContent = "Armocromia";
+    }
 }
 
 function handlePhotoFile(file){
@@ -765,6 +803,12 @@ function handlePhotoFile(file){
     status.classList.add("ok");
     document.getElementById("downloadPhotoBtn").classList.add("is-visible");
     document.getElementById("genderTabs").classList.add("is-hidden");
+    document.getElementById("metricOne").textContent = "Foto";
+    document.getElementById("metricTwo").textContent = "Analisi";
+    document.getElementById("metricThree").textContent = "Report";
+    document.getElementById("microOne").textContent = "Simmetria";
+    document.getElementById("microTwo").textContent = "Dettagli";
+    document.getElementById("microThree").textContent = "Profilo";
 }
 
 const fileInput = document.getElementById("facePhoto");
