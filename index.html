@@ -707,6 +707,20 @@ h2{
     }
 }
 
+
+/* FINAL UX COMPACT FORM */
+.compact-form .field select{cursor:pointer;}
+@media(max-width:700px){
+    .compact-form{grid-template-columns:1fr 1fr; gap:12px;}
+    .compact-form .field:first-child,
+    .compact-form .field:nth-child(6),
+    .compact-form .field:nth-child(7),
+    .compact-form .field:nth-child(8){grid-column:1 / -1;}
+    .compact-form input,
+    .compact-form select{height:46px; font-size:13px;}
+    .compact-form .field label{font-size:11px; margin-bottom:6px;}
+}
+
 </style>
 </head>
 
@@ -844,19 +858,16 @@ h2{
         <div class="card" id="form">
             <div class="card-title">
                 <div class="icon-bubble">👤</div>
-                <div><h2>Informazioni del soggetto</h2><div class="hint">Più informazioni fornisci, più il report sarà preciso e dettagliato.</div></div>
+                <div><h2>Informazioni del soggetto</h2><div class="hint">Compila solo quello che vuoi: occhi e capelli verranno stimati dalla foto.</div></div>
             </div>
 
-            <div class="grid">
+            <div class="grid compact-form">
                 <div class="field"><label>Sesso</label><select id="sesso"><option value="">Seleziona</option><option>Maschio</option><option>Femmina</option><option>Altro / Preferisco non indicarlo</option></select></div>
-                <div class="field"><label>Età</label><input id="eta" placeholder="es. 30"></div>
-                <div class="field"><label>Altezza (cm)</label><input id="altezza" placeholder="es. 175"></div>
-                <div class="field"><label>Peso (kg)</label><input id="peso" placeholder="es. 70"></div>
-                <div class="field"><label>Colore occhi</label><input id="occhi" placeholder="es. marroni"></div>
-                <div class="field"><label>Colore capelli</label><input id="capelli" placeholder="es. castani"></div>
+                <div class="field"><label>Età</label><select id="eta"><option value="">Seleziona fascia</option><option>18-20</option><option>20-25</option><option>25-30</option><option>30-35</option><option>35-40</option><option>40-45</option><option>45-50</option><option>50-55</option><option>55-60</option><option>60-65</option><option>65-70</option><option>70-75</option><option>75-80</option><option>80-85</option><option>85-90</option><option>90-95</option><option>95-100</option></select></div>
+                <div class="field"><label>Altezza</label><select id="altezza"><option value="">Seleziona fascia</option><option>Sotto 150 cm</option><option>150-160 cm</option><option>160-170 cm</option><option>170-180 cm</option><option>180-190 cm</option><option>190-200 cm</option><option>Oltre 200 cm</option></select></div>
+                <div class="field"><label>Peso</label><select id="peso"><option value="">Seleziona fascia</option><option>Sotto 45 kg</option><option>45-55 kg</option><option>55-65 kg</option><option>65-75 kg</option><option>75-85 kg</option><option>85-95 kg</option><option>95-110 kg</option><option>Oltre 110 kg</option></select></div>
                 <div class="field"><label>Occhiali</label><select id="occhiali"><option value="">Seleziona</option><option>Sì</option><option>No</option><option>A volte</option></select></div>
-                <div class="field"><label>Fumatore</label><select id="fumo"><option value="">Seleziona</option><option>Sì</option><option>No</option><option>Occasionale</option></select></div>
-                <div class="field"><label>Consumo di alcol</label><select id="alcol"><option value="">Seleziona</option><option>Nessuno</option><option>Basso</option><option>Moderato</option><option>Elevato</option></select></div>
+                <div class="field"><label>Fumo e alcol</label><select id="abitudini"><option value="">Seleziona</option><option>No fumo / no alcol</option><option>No fumo / alcol basso</option><option>No fumo / alcol moderato</option><option>Fumo occasionale / no alcol</option><option>Fumo occasionale / alcol basso</option><option>Fumo poco / alcol basso</option><option>Fumo regolare / no alcol</option><option>Fumo regolare / alcol moderato</option><option>Fumo e alcol elevati</option><option>Preferisco non indicarlo</option></select></div>
                 <div class="field"><label>Attività fisica</label><select id="sport"><option value="">Seleziona</option><option>Sedentario</option><option>1-2 volte a settimana</option><option>3-4 volte a settimana</option><option>5 o più volte a settimana</option></select></div>
                 <div class="field"><label>Routine skincare</label><select id="skincare"><option value="">Seleziona</option><option>Nessuna</option><option>Base: detergente / crema</option><option>Regolare: detergente, crema, SPF</option><option>Avanzata: routine completa con attivi</option></select></div>
             </div>
@@ -999,7 +1010,7 @@ let testo = `Crea un report estetico premium del volto basato sulla fotografia c
 
 Il risultato deve essere interamente in italiano.
 
-Basati principalmente sull'immagine. Usa le informazioni aggiuntive solo quando sono realmente pertinenti. Se un aspetto non è valutabile con affidabilità dalla foto, dichiaralo chiaramente e formula solo stime prudenti.
+Basati principalmente sull'immagine. Usa le informazioni aggiuntive solo quando sono realmente pertinenti. Colore occhi e capelli devono essere stimati dalla foto, senza forzare se non sono valutabili. Se un aspetto non è valutabile con affidabilità dalla foto, dichiaralo chiaramente e formula solo stime prudenti.
 
 IMPORTANTE: la fotografia non è stata inviata tramite questo sito. L'utente la caricherà manualmente in ChatGPT insieme a questo prompt. Considera solo le immagini effettivamente presenti nella chat.
 
@@ -1009,11 +1020,10 @@ Sesso: ${valore("sesso")}
 Età: ${valore("eta")}
 Altezza: ${valore("altezza")}
 Peso: ${valore("peso")}
-Colore occhi: ${valore("occhi")}
-Colore capelli: ${valore("capelli")}
+Colore occhi: da stimare dalla foto
+Colore capelli: da stimare dalla foto
 Occhiali: ${valore("occhiali")}
-Fumatore: ${valore("fumo")}
-Consumo di alcol: ${valore("alcol")}
+Fumo e alcol: ${valore("abitudini")}
 Attività fisica: ${valore("sport")}
 Routine skincare: ${valore("skincare")}
 Foto caricata nel sito: ${uploadedPhoto ? "Sì, una foto frontale" : "No / da caricare manualmente in ChatGPT"}
