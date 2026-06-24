@@ -555,6 +555,158 @@ h2{
     letter-spacing:-.05px;
 }
 
+
+/* FINAL POLISH — MOBILE COMPACT + B3pZ SIGNATURE */
+.footer-signature{
+    margin-top:8px;
+    color:rgba(242,210,155,.34);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+
+@media(max-width:700px){
+    .hero{
+        padding-top:22px;
+    }
+    h1{
+        font-size:clamp(38px,14vw,62px);
+        margin:22px 0 16px;
+    }
+    .hero-copy{
+        font-size:15px;
+        line-height:1.58;
+        margin-bottom:20px;
+    }
+    .pills{
+        gap:8px;
+        margin-bottom:22px;
+    }
+    .pill{
+        padding:8px 11px;
+        font-size:11px;
+    }
+    .preview-panel{
+        padding:12px;
+        border-radius:22px;
+    }
+    .preview-tabs{
+        margin-bottom:12px;
+        gap:10px;
+    }
+    .gender-tab{
+        padding:10px 12px;
+        font-size:12px;
+    }
+    .hero-indicators{
+        grid-template-columns:repeat(3,1fr);
+        gap:8px;
+        margin-bottom:10px;
+        width:100%;
+    }
+    .hero-indicator{
+        padding:8px 6px;
+        border-radius:12px;
+    }
+    .hero-indicator span{
+        font-size:9px;
+        letter-spacing:.06em;
+    }
+    .face-stage{
+        height:330px;
+        border-radius:20px;
+    }
+    .hero-micro-label{
+        font-size:8px;
+        padding:6px 7px;
+        opacity:.82;
+    }
+    .visual-badge{
+        left:14px;
+        bottom:14px;
+        font-size:9px;
+        padding:7px 9px;
+    }
+    .analysis-box{
+        display:none;
+    }
+    .feature-strip{
+        margin-top:18px;
+    }
+    .feature{
+        min-height:auto;
+        padding:16px;
+    }
+    .feature-icon{
+        font-size:21px;
+    }
+    .feature strong{
+        font-size:12px;
+    }
+    .feature span{
+        font-size:12px;
+    }
+    main{
+        padding-top:18px;
+    }
+    .card{
+        padding:18px;
+        border-radius:20px;
+    }
+    .card-title{
+        margin-bottom:18px;
+    }
+    .icon-bubble{
+        width:40px;
+        height:40px;
+        border-radius:12px;
+    }
+    h2{
+        font-size:26px;
+    }
+    .steps{
+        gap:12px;
+    }
+    .step{
+        padding:4px 0;
+        grid-template-columns:40px 1fr;
+        gap:12px;
+    }
+    .step-number{
+        width:36px;
+        height:36px;
+    }
+    .dropzone{
+        min-height:220px;
+    }
+    .local-note{
+        padding:12px;
+        font-size:12px;
+    }
+    .grid{
+        grid-template-columns:1fr 1fr;
+        gap:14px;
+    }
+    .field:nth-child(1),
+    .field:nth-child(n+8){
+        grid-column:1 / -1;
+    }
+    input,select{
+        height:46px;
+        font-size:13px;
+    }
+    .footer{
+        padding:22px 0 30px;
+    }
+    .footer-inner{
+        text-align:left;
+    }
+    .footer-signature{
+        margin-bottom:12px;
+    }
+}
+
 </style>
 </head>
 
@@ -686,7 +838,7 @@ h2{
                 </div>
             </div>
 
-            <div class="local-note">La foto viene mostrata solo come anteprima locale nel browser e non viene inviata a nessun server. Per generare il report dovrai caricare manualmente la stessa foto su ChatGPT insieme al prompt copiato.</div>
+            <div class="local-note">🔒 La foto resta sul tuo dispositivo. Per generare il report dovrai caricarla manualmente su ChatGPT insieme al prompt copiato.</div>
         </div>
 
         <div class="card" id="form">
@@ -722,7 +874,10 @@ h2{
 
 <footer class="footer">
     <div class="wrap footer-inner">
-        <strong>Premium Facial Aesthetic Report</strong>
+        <div>
+            <strong>Premium Facial Aesthetic Report</strong>
+            <div class="footer-signature">Designed by B3pZ</div>
+        </div>
         <span>Ogni volto ha caratteristiche uniche. Questo report aiuta a comprenderle e valorizzarle.<br>Le valutazioni sono puramente estetiche e orientative. Non sostituiscono una consulenza medica, dermatologica o psicologica.</span>
     </div>
 </footer>
@@ -1070,7 +1225,7 @@ function downloadCurrentPhoto(){
     document.body.appendChild(a);
     a.click();
     a.remove();
-    showMessage("Foto salvata. Caricala su ChatGPT insieme al prompt copiato.");
+    showMessage("✓ Foto salvata. Caricala su ChatGPT insieme al prompt copiato.");
 }
 
 
